@@ -1,15 +1,17 @@
+import Navbar from "@/components/navigation/Navbar";
 import { Button } from "@/components/ui/button";
 import { DASHBOARD_ROUTE } from "@/routes";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <main className="flex-1 flex items-center justify-center px-4 sm:px-6">
-      <div className="max-w-3xl mx-auto text-center space-y-6 py-20">
+    <div className="min-h-screen bg-background flex flex-col">
+      <Navbar />
+      <div className="flex flex-col items-center justify-center max-w-3xl mx-auto text-center space-y-6 py-20 h-[80vh]">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
           Welcome to <span className="text-gradient">Capitec</span>
         </h1>
-        <p className="text-3xl font-bold text-muted-foreground">
+        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-muted-foreground">
           Spending Insights Hub
         </p>
 
@@ -27,7 +29,7 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

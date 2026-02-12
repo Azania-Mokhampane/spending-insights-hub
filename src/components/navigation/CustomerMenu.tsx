@@ -1,4 +1,4 @@
-import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 import {
@@ -11,7 +11,7 @@ import {
 } from "../ui/dropdown-menu";
 import { useCustomerProfile } from "@/hooks/useCustomerProfile";
 import { Spinner } from "../ui/spinner";
-import { getCustomerInitials } from "./helpers/getCustomerInitials";
+import { getCustomerInitials } from "../../helpers/getCustomerInitials";
 
 const CustomerMenu = () => {
   // the customerId will most likely come from the decoded JWt session token depending on how auth is setup
@@ -58,18 +58,6 @@ const CustomerMenu = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
-          Profile
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <HelpCircle className="mr-2 h-4 w-4" />
-          Help & Support
-        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-destructive focus:text-destructive">
           <LogOut className="mr-2 h-4 w-4" />
