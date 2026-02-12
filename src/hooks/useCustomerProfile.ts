@@ -1,0 +1,19 @@
+import type { CustomerProfile } from "@/lib/types";
+import { useQuery } from "@tanstack/react-query";
+
+export const CUSTOMER_PROFILE_QUERY_KEY = "customer-profile";
+
+export const useCustomerProfile = (customerId: string) => {
+  return useQuery<CustomerProfile>({
+    queryKey: [CUSTOMER_PROFILE_QUERY_KEY, customerId],
+    queryFn: async () => {
+      const res = await fetch(`/api/customers/${customerId}/profile`);
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch customer profile");
+      }
+
+      return res.json();
+    },
+  });
+};
