@@ -62,16 +62,8 @@ const Overview = () => {
           subtitle="Past 30 days"
           linkTo="/dashboard/trends"
         />
+        {/* <CategoryBreakdown categories={categories} /> */}
       </div>
-
-      {/* <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div className="lg:col-span-3">
-          <SpendingTrends trends={trends.slice(-6)} />
-        </div>
-        <div className="lg:col-span-2">
-          <CategoryBreakdown categories={categories} />
-        </div>
-      </div> */}
     </div>
   );
 };

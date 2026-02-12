@@ -1,4 +1,4 @@
-import { http, HttpResponse, delay } from "msw";
+import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
 
 export const customerProfileHandler = http.get(
@@ -6,7 +6,6 @@ export const customerProfileHandler = http.get(
   async ({ params }) => {
     const { customerId } = params;
 
-    // this simulates network latency
     await delay(600);
 
     if (!customerId) {
@@ -16,15 +15,13 @@ export const customerProfileHandler = http.get(
       );
     }
 
-    const customer = mockCustomers[customerId as string];
-
-    if (!customer) {
+    if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
         { status: 404 },
       );
     }
 
-    return HttpResponse.json(customer);
+    return HttpResponse.json(mockCustomers.get(customerId as string));
   },
 );

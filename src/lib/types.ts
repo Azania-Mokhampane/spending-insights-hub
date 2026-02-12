@@ -28,3 +28,21 @@ export type MonthlySpendingTrendType = {
   transactionCount: number;
   averageTransaction: number;
 };
+
+export type CategoryBreakdownType = {
+  name: string;
+  amount: number;
+  percentage: number;
+  transactionCount: number;
+  color: string;
+  icon: string;
+};
+
+export type SpendingByCategoryType = {
+  dateRange: {
+    startDate: string;
+    endDate: string;
+  };
+  totalAmount: number;
+  categories: CategoryBreakdownType[];
+};

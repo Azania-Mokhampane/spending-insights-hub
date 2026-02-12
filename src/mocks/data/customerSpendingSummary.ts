@@ -1,49 +1,57 @@
 import type { Period, SpendingSummaryType } from "@/lib/types";
+import { faker } from "@faker-js/faker";
 
-export const mockCustomerSpendingSummary: Record<Period, SpendingSummaryType> =
-  {
-    "7d": {
-      period: "7d",
-      totalSpent: 420.75,
-      transactionCount: 8,
-      averageTransaction: 52.59,
-      topCategory: "Dining",
-      comparedToPrevious: {
-        spentChange: -2.4,
-        transactionChange: -1.2,
-      },
-    },
-    "30d": {
-      period: "30d",
-      totalSpent: 2840.3,
-      transactionCount: 34,
-      averageTransaction: 83.54,
-      topCategory: "Groceries",
-      comparedToPrevious: {
-        spentChange: 15.2,
-        transactionChange: 5.4,
-      },
-    },
-    "90d": {
-      period: "90d",
-      totalSpent: 8150.25,
-      transactionCount: 92,
-      averageTransaction: 88.59,
-      topCategory: "Transportation",
-      comparedToPrevious: {
-        spentChange: 8.7,
-        transactionChange: 2.1,
-      },
-    },
-    "1y": {
-      period: "1y",
-      totalSpent: 15420.5,
-      transactionCount: 184,
-      averageTransaction: 83.81,
-      topCategory: "Shopping",
-      comparedToPrevious: {
-        spentChange: 12.5,
-        transactionChange: 4.8,
-      },
+const periodMultiplier: Record<Period, number> = {
+  "7d": 1,
+  "30d": 4,
+  "90d": 12,
+  "1y": 48,
+};
+
+const categories = [
+  "Groceries",
+  "Dining",
+  "Transportation",
+  "Shopping",
+  "Entertainment",
+  "Utilities",
+];
+
+export const customerSpendingSummary = (
+  period: Period,
+): SpendingSummaryType => {
+  const multiplier = periodMultiplier[period];
+
+  const transactionCount = faker.number.int({
+    min: 5 * multiplier,
+    max: 15 * multiplier,
+  });
+
+  const averageTransaction = faker.number.float({
+    min: 50,
+    max: 500,
+    fractionDigits: 2,
+  });
+
+  const totalSpent = Number((transactionCount * averageTransaction).toFixed(2));
+
+  return {
+    period,
+    totalSpent,
+    transactionCount,
+    averageTransaction: Number(averageTransaction.toFixed(2)),
+    topCategory: faker.helpers.arrayElement(categories),
+    comparedToPrevious: {
+      spentChange: faker.number.float({
+        min: -20,
+        max: 25,
+        fractionDigits: 1,
+      }),
+      transactionChange: faker.number.float({
+        min: -15,
+        max: 20,
+        fractionDigits: 1,
+      }),
     },
   };
+};

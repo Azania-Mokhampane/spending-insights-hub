@@ -1,14 +1,14 @@
-import type { Period } from "@/lib/types";
 import { delay, http, HttpResponse } from "msw";
-import { mockCustomerSpendingSummary } from "../data/customerSpendingSummary";
 import { mockCustomers } from "../data/customers";
+import { customerMonthlySpendingTrends } from "../data/customerMonthlySpendingTrends";
 
-export const spendingSummaryHandler = http.get(
-  "/api/customers/:customerId/spending/summary",
+export const monthlySpendingTrendsHandler = http.get(
+  "/api/customers/:customerId/spending/trends",
   async ({ params, request }) => {
     const { customerId } = params;
     const url = new URL(request.url);
-    const period = (url.searchParams.get("period") ?? "30d") as Period;
+    const monthsParam = Number(url.searchParams.get("months"));
+    const months = Math.min(Math.max(monthsParam || 12, 1), 24);
 
     await delay(600);
 
@@ -19,16 +19,14 @@ export const spendingSummaryHandler = http.get(
       );
     }
 
-    // simulate a non existing customer
-    const customer = mockCustomers[customerId as string];
-
-    if (!customer) {
+    if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
         { status: 404 },
       );
     }
+    const trends = customerMonthlySpendingTrends(months);
 
-    return HttpResponse.json(mockCustomerSpendingSummary[period]);
+    return HttpResponse.json({ trends });
   },
 );
