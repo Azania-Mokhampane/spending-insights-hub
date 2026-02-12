@@ -9,7 +9,14 @@ export const customerProfileHandler = http.get(
     // this simulates network latency
     await delay(600);
 
-    const customer = mockCustomers[customerId as string & undefined];
+    if (!customerId) {
+      return HttpResponse.json(
+        { message: "Customer ID is required" },
+        { status: 400 },
+      );
+    }
+
+    const customer = mockCustomers[customerId as string];
 
     if (!customer) {
       return HttpResponse.json(

@@ -21,3 +21,10 @@ export type SpendingSummaryType = {
     transactionChange: number;
   };
 };
+
+export type MonthlySpendingTrendType = {
+  month: string;
+  totalSpent: number;
+  transactionCount: number;
+  averageTransaction: number;
+};
