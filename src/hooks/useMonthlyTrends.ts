@@ -21,6 +21,5 @@ export const useMonthlyTrends = ({
       }
       return res.json();
     },
-    staleTime: "static",
   });
 };

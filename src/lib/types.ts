@@ -46,3 +46,15 @@ export type SpendingByCategoryType = {
   totalAmount: number;
   categories: CategoryType[];
 };
+
+export type GoalStatusType = "on_track" | "warning" | "exceeded";
+
+export type BudgetGoal = {
+  id: string;
+  category: string;
+  monthlyBudget: number;
+  currentSpent: number;
+  percentageUsed: number;
+  daysRemaining: number;
+  status: GoalStatusType;
+};

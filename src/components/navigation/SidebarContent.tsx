@@ -22,15 +22,21 @@ import { getCustomerInitials } from "@/helpers/getCustomerInitials";
 import { cn } from "@/lib/utils";
 import { NavLink } from "./NavLink";
 import { Button } from "../ui/button";
-import { DASHBOARD_ROUTE, HOME_ROUTE } from "@/routes";
+import {
+  DASHBOARD_GOALS_ROUTE,
+  DASHBOARD_ROUTE,
+  DASHBOARD_TRANSACTIONS_ROUTE,
+  DASHBOARD_TRENDS_ROUTE,
+  HOME_ROUTE,
+} from "@/routes";
 import { Link } from "react-router-dom";
 import { Separator } from "../ui/separator";
 
 const navItems = [
   { title: "Overview", url: DASHBOARD_ROUTE, icon: LayoutDashboard, end: true },
-  { title: "Trends", url: "/dashboard/trends", icon: TrendingUp },
-  { title: "Transactions", url: "/dashboard/transactions", icon: Receipt },
-  { title: "Goals", url: "/dashboard/goals", icon: Target },
+  { title: "Trends", url: DASHBOARD_TRENDS_ROUTE, icon: TrendingUp },
+  { title: "Transactions", url: DASHBOARD_TRANSACTIONS_ROUTE, icon: Receipt },
+  { title: "Goals", url: DASHBOARD_GOALS_ROUTE, icon: Target },
 ];
 
 interface ISidebarContentProps {

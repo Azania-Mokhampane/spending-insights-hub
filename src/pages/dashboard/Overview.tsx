@@ -8,9 +8,11 @@ import { useCustomerProfile } from "@/hooks/useCustomerProfile";
 import { useSpendingSummary } from "@/hooks/useSpendingSummary";
 import { useSpendingByCategory } from "@/hooks/useSpendingByCategory";
 import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
+import { DASHBOARD_TRANSACTIONS_ROUTE, DASHBOARD_TRENDS_ROUTE } from "@/routes";
+import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
 const Overview = () => {
-  const customerId = "12345";
+  const customerId = MOCK_CUSTOMER_ID;
   const { data: customer } = useCustomerProfile(customerId);
   const { data: spendingSummary } = useSpendingSummary({
     period: "30d", // showing just for the past 30 days for overview then filters will apply for a more detailed view
@@ -34,7 +36,7 @@ const Overview = () => {
         <SectionHeader
           title="Spending Summary"
           subtitle="Past 30 days"
-          linkTo="/dashboard/transactions"
+          linkTo={DASHBOARD_TRANSACTIONS_ROUTE}
         />
         {spendingSummary && <SummaryCards spendingSummary={spendingSummary} />}
       </div>
@@ -44,7 +46,7 @@ const Overview = () => {
         <SectionHeader
           title="Spending Trends"
           subtitle="Past 12 months"
-          linkTo="/dashboard/trends"
+          linkTo={DASHBOARD_TRENDS_ROUTE}
         />
         <MonthlySpendingTrends trends={trends?.trends || []} />
       </div>
@@ -54,7 +56,7 @@ const Overview = () => {
         <SectionHeader
           title="By Category"
           subtitle="Past 30 days"
-          linkTo="/dashboard/trends"
+          linkTo={DASHBOARD_TRENDS_ROUTE}
         />
         {spendingByCategory && (
           <CategoryBreakdown spendingByCategory={spendingByCategory} />

@@ -62,7 +62,7 @@ const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
                 axisLine={false}
                 tickLine={false}
                 label={{
-                  value: "Txns",
+                  value: "Transactions",
                   angle: 90,
                   position: "insideRight",
                   fontSize: 11,
