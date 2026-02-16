@@ -1,5 +1,6 @@
 import type { Period, SpendingSummaryType } from "@/lib/types";
 import { faker } from "@faker-js/faker";
+import { categoryOptions } from "./spendingByCategory";
 
 const periodMultiplier: Record<Period, number> = {
   "7d": 1,
@@ -8,14 +9,7 @@ const periodMultiplier: Record<Period, number> = {
   "1y": 48,
 };
 
-const categories = [
-  "Groceries",
-  "Dining",
-  "Transportation",
-  "Shopping",
-  "Entertainment",
-  "Utilities",
-];
+const categories = categoryOptions.map((category) => category.name);
 
 export const customerSpendingSummary = (
   period: Period,

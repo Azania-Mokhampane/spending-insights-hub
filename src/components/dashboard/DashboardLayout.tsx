@@ -19,7 +19,7 @@ export default function DashboardLayout() {
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
             <BarChart3 className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="text-base font-bold tracking-tight">Capictec</span>
+          <span className="text-base font-bold tracking-tight">Capitec</span>
         </Link>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>

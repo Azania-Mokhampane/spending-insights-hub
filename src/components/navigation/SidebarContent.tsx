@@ -55,7 +55,7 @@ export const SidebarContent = ({
           <BarChart3 className="h-4 w-4 text-primary-foreground" />
         </div>
         {!collapsed && (
-          <span className="text-base font-bold tracking-tight">Capictec</span>
+          <span className="text-base font-bold tracking-tight">Capitec</span>
         )}
       </Link>
 

@@ -2,40 +2,33 @@ import CustomerSummary from "@/components/dashboard/CustomerSummary";
 import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
 import SectionHeader from "@/components/dashboard/SectionHeader";
 import SummaryCards from "@/components/dashboard/SummaryCards";
-import { useCustomerMonthlyTrends } from "@/hooks/useCustomerMonthlyTrends";
+import { useMonthlyTrends } from "@/hooks/useMonthlyTrends";
 
 import { useCustomerProfile } from "@/hooks/useCustomerProfile";
-import { useCustomerSpendingSummary } from "@/hooks/useCustomerSpendingSummary";
+import { useSpendingSummary } from "@/hooks/useSpendingSummary";
+import { useSpendingByCategory } from "@/hooks/useSpendingByCategory";
+import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
 
 const Overview = () => {
   const customerId = "12345";
   const { data: customer } = useCustomerProfile(customerId);
-  const { data: spendingSummary } = useCustomerSpendingSummary({
+  const { data: spendingSummary } = useSpendingSummary({
     period: "30d", // showing just for the past 30 days for overview then filters will apply for a more detailed view
     customerId,
   });
-  const { data: trends } = useCustomerMonthlyTrends({ months: 12, customerId });
+  const { data: trends } = useMonthlyTrends({ months: 12, customerId });
+  const { data: spendingByCategory } = useSpendingByCategory({
+    customerId,
+    period: "30d",
+    startDate: "",
+    endDate: "",
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6">
       {/* TODO: add error and loading state */}
       {customer && <CustomerSummary customer={customer} />}
-      {/* this will go where we have filters
-        <Select
-          value={period}
-          onValueChange={(value) => setPeriod(value as Period)}
-        >
-          <SelectTrigger className="w-40 h-9 text-sm">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.entries(periodNames).map(([value, label]) => (
-              <SelectItem key={value} value={value}>
-                {label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select> */}
+
       {/* TODO: add error and loading state */}
       <div className="space-y-2">
         <SectionHeader
@@ -56,13 +49,16 @@ const Overview = () => {
         <MonthlySpendingTrends trends={trends?.trends || []} />
       </div>
 
+      {/* TODO: add error and loading state */}
       <div className="space-y-2">
         <SectionHeader
           title="By Category"
           subtitle="Past 30 days"
           linkTo="/dashboard/trends"
         />
-        {/* <CategoryBreakdown categories={categories} /> */}
+        {spendingByCategory && (
+          <CategoryBreakdown spendingByCategory={spendingByCategory} />
+        )}
       </div>
     </div>
   );

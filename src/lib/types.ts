@@ -29,7 +29,7 @@ export type MonthlySpendingTrendType = {
   averageTransaction: number;
 };
 
-export type CategoryBreakdownType = {
+export type CategoryType = {
   name: string;
   amount: number;
   percentage: number;
@@ -44,5 +44,5 @@ export type SpendingByCategoryType = {
     endDate: string;
   };
   totalAmount: number;
-  categories: CategoryBreakdownType[];
+  categories: CategoryType[];
 };

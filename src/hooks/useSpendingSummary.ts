@@ -1,8 +1,8 @@
 import type { Period, SpendingSummaryType } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 
-export const CUSTOMER_SPENDING_SUMMARY_QUERY_KEY = "customer-spending-summary";
-export const useCustomerSpendingSummary = ({
+export const SPENDING_SUMMARY_QUERY_KEY = "spending-summary";
+export const useSpendingSummary = ({
   period,
   customerId,
 }: {
@@ -10,7 +10,7 @@ export const useCustomerSpendingSummary = ({
   customerId: string;
 }) => {
   return useQuery<SpendingSummaryType>({
-    queryKey: [CUSTOMER_SPENDING_SUMMARY_QUERY_KEY, period, customerId],
+    queryKey: [SPENDING_SUMMARY_QUERY_KEY, period, customerId],
     queryFn: async () => {
       const res = await fetch(
         `/api/customers/${customerId}/spending/summary?period=${period}`,
