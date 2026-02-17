@@ -1,5 +1,10 @@
-import type { PaginationType, SortBy, TransactionType } from "types";
+import type {
+  PaginationType,
+  TransactionsSortBy,
+  TransactionType,
+} from "types";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { formatToISODate } from "@/helpers/dateUtils";
 
 export const TRANSACTIONS_QUERY_KEY = "transactions";
 
@@ -16,9 +21,9 @@ export const useTransactions = ({
   page?: number;
   perPage?: number;
   category?: string | null;
-  startDate?: string | null;
-  endDate?: string | null;
-  sortBy?: SortBy;
+  startDate?: Date | null;
+  endDate?: Date | null;
+  sortBy?: TransactionsSortBy;
 }) => {
   return useQuery<{
     transactions: TransactionType[];
@@ -37,18 +42,25 @@ export const useTransactions = ({
     queryFn: async () => {
       const params = new URLSearchParams();
       params.set("limit", String(perPage));
-      params.set("offset", String(page - 1));
+      params.set("offset", String((page - 1) * perPage));
       if (category) params.set("category", category);
-      if (startDate) params.set("startDate", startDate);
-      if (endDate) params.set("endDate", endDate);
+      if (startDate) params.set("startDate", formatToISODate(startDate));
+      if (endDate) params.set("endDate", formatToISODate(endDate));
       params.set("sortBy", sortBy);
+
+      if (!customerId) {
+        throw new Error("Customer ID is required");
+      }
 
       const res = await fetch(
         `/api/customers/${customerId}/transactions?${params.toString()}`,
       );
 
       if (!res.ok) {
-        throw new Error("Failed to fetch transactions");
+        const errorMessage = await res.json();
+        throw new Error(
+          errorMessage?.message || "Failed to fetch transactions",
+        );
       }
 
       return res.json();

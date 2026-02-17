@@ -12,7 +12,7 @@ import {
   Utensils,
   Zap,
 } from "lucide-react";
-import type { Period } from "types";
+import type { Period, TransactionsSortBy } from "types";
 
 export const periodNames: Record<Period, string> = {
   "7d": "Last 7 days",
@@ -35,3 +35,10 @@ export const ICON_PRESETS = {
   GraduationCap,
   Smartphone,
 } as const;
+
+export const TRANSACTION_SORT_LABELS: Record<TransactionsSortBy, string> = {
+  date_desc: "Newest first",
+  date_asc: "Oldest first",
+  amount_desc: "Highest amount",
+  amount_asc: "Lowest amount",
+};

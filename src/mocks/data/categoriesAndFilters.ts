@@ -20,6 +20,7 @@ export const categoriesAndFilters = (): {
   dateRangePresets: DateRangePresetType[];
 } => {
   const categories = ALL_CATEGORIES;
+  //   const categories: CategoryType[] = [];
 
   return {
     categories,

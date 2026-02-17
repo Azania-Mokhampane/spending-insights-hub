@@ -3,10 +3,11 @@ import {
   parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
+  parseAsIsoDate,
 } from "nuqs";
-import type { SortBy } from "types";
+import type { TransactionsSortBy } from "types";
 
-const sortByParser = parseAsStringLiteral<SortBy>([
+const sortByParser = parseAsStringLiteral<TransactionsSortBy>([
   "amount_asc",
   "amount_desc",
   "date_asc",
@@ -19,12 +20,13 @@ export const usePerPageFilter = () =>
 export const usePageFilter = () =>
   useQueryState("page", parseAsInteger.withDefault(1));
 
-export const useCategoryFilter = () => useQueryState("category", parseAsString);
+export const useCategoryFilter = () =>
+  useQueryState("category", parseAsString.withDefault("all"));
 
 export const useStartDateFilter = () =>
-  useQueryState("startDate", parseAsString);
+  useQueryState("startDate", parseAsIsoDate);
 
-export const useEndDateFilter = () => useQueryState("endDate", parseAsString);
+export const useEndDateFilter = () => useQueryState("endDate", parseAsIsoDate);
 
 export const useSortByFilter = () =>
   useQueryState("sortBy", {

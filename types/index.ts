@@ -59,7 +59,11 @@ export type BudgetGoal = {
   status: GoalStatusType;
 };
 
-export type SortBy = "date_desc" | "date_asc" | "amount_desc" | "amount_asc";
+export type TransactionsSortBy =
+  | "date_desc"
+  | "date_asc"
+  | "amount_desc"
+  | "amount_asc";
 
 export type TransactionType = {
   id: string;

@@ -1,5 +1,9 @@
 import { faker } from "@faker-js/faker";
-import type { PaginationType, SortBy, TransactionType } from "types";
+import type {
+  PaginationType,
+  TransactionsSortBy,
+  TransactionType,
+} from "types";
 import { ALL_CATEGORIES } from "./categoriesAndFilters";
 
 const paymentMethods = ["Credit Card", "Debit Card", "Debit Order"];
@@ -49,7 +53,7 @@ type TransactionsParams = {
   limit?: number;
   offset?: number;
   category?: string | null;
-  sortBy?: SortBy;
+  sortBy?: TransactionsSortBy;
   startDate?: string | null;
   endDate?: string | null;
 };
@@ -65,7 +69,7 @@ export const transactions = ({
   transactions: TransactionType[];
   pagination: PaginationType;
 } => {
-  let data = generateTransactions(100);
+  let data = generateTransactions(1250);
 
   // category filter
   if (category) {
