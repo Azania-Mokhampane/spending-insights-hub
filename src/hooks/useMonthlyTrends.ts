@@ -1,4 +1,4 @@
-import type { MonthlySpendingTrendType } from "@/lib/types";
+import type { MonthlySpendingTrendType } from "types";
 import { useQuery } from "@tanstack/react-query";
 
 export const MONTHLY_TRENDS_QUERY_KEY = "monthly-trends";

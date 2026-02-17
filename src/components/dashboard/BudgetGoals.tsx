@@ -1,4 +1,4 @@
-import type { BudgetGoal } from "@/lib/types";
+import type { BudgetGoal } from "types";
 import { AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";

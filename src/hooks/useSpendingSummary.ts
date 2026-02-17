@@ -1,4 +1,4 @@
-import type { Period, SpendingSummaryType } from "@/lib/types";
+import type { Period, SpendingSummaryType } from "types";
 import { useQuery } from "@tanstack/react-query";
 
 export const SPENDING_SUMMARY_QUERY_KEY = "spending-summary";

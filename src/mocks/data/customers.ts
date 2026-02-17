@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { CustomerProfileType } from "@/lib/types";
+import type { CustomerProfileType } from "types";
 
 export const MOCK_CUSTOMER_ID = "12345";
 

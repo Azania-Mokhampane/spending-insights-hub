@@ -1,12 +1,18 @@
 import {
   Car,
   Film,
+  GraduationCap,
+  Heart,
+  Home,
+  Plane,
+  Shirt,
   ShoppingBag,
   ShoppingCart,
+  Smartphone,
   Utensils,
   Zap,
 } from "lucide-react";
-import type { Period } from "./types";
+import type { Period } from "types";
 
 export const periodNames: Record<Period, string> = {
   "7d": "Last 7 days",
@@ -22,4 +28,10 @@ export const ICON_PRESETS = {
   Utensils,
   ShoppingBag,
   Zap,
+  Home,
+  Heart,
+  Shirt,
+  Plane,
+  GraduationCap,
+  Smartphone,
 } as const;

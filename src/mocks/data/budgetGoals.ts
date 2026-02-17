@@ -1,6 +1,6 @@
-import type { BudgetGoal, GoalStatusType } from "@/lib/types";
+import type { BudgetGoal, GoalStatusType } from "types";
 import { faker } from "@faker-js/faker";
-import { categoryOptions } from "./spendingByCategory";
+import { ALL_CATEGORIES } from "./categoriesAndFilters";
 
 const getStatus = (percentage: number): GoalStatusType => {
   if (percentage < 70) return "on_track";
@@ -18,7 +18,7 @@ export const budgetGoals = (): BudgetGoal[] => {
   const daysRemaining = getDaysRemainingInMonth();
 
   const goals = faker.helpers
-    .arrayElements(categoryOptions, { min: 2, max: 5 })
+    .arrayElements(ALL_CATEGORIES, { min: 2, max: 5 })
     .map((category, index) => {
       const monthlyBudget = faker.number.float({
         min: 500,

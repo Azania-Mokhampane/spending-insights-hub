@@ -1,4 +1,4 @@
-import type { CustomerProfileType } from "@/lib/types";
+import type { CustomerProfileType } from "types";
 import { useQuery } from "@tanstack/react-query";
 
 export const CUSTOMER_PROFILE_QUERY_KEY = "customer-profile";

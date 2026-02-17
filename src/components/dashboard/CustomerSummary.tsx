@@ -1,4 +1,4 @@
-import type { CustomerProfileType } from "@/lib/types";
+import type { CustomerProfileType } from "types";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { getCustomerInitials } from "@/helpers/getCustomerInitials";
 import { Badge } from "../ui/badge";

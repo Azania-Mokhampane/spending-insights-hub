@@ -1,4 +1,4 @@
-import type { BudgetGoal } from "@/lib/types";
+import type { BudgetGoal } from "types";
 import { useQuery } from "@tanstack/react-query";
 
 export const BUDGET_GOALS_QUERY_KEY = "budget-goals";

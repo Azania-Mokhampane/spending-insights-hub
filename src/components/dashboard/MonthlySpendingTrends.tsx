@@ -1,4 +1,4 @@
-import type { MonthlySpendingTrendType } from "@/lib/types";
+import type { MonthlySpendingTrendType } from "types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   Bar,

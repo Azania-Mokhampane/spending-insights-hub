@@ -1,4 +1,4 @@
-import type { SpendingByCategoryType } from "@/lib/types";
+import type { SpendingByCategoryType } from "types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import {

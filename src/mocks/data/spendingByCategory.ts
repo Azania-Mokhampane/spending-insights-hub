@@ -1,14 +1,6 @@
-import type { Period, SpendingByCategoryType } from "@/lib/types";
+import type { Period, SpendingByCategoryType } from "types";
 import { faker } from "@faker-js/faker";
-
-export const categoryOptions = [
-  { name: "Groceries", color: "#FF6B6B", icon: "ShoppingCart" },
-  { name: "Entertainment", color: "#4ECDC4", icon: "Film" },
-  { name: "Transportation", color: "#45B7D1", icon: "Car" },
-  { name: "Dining", color: "#F7DC6F", icon: "Utensils" },
-  { name: "Shopping", color: "#BB8FCE", icon: "ShoppingBag" },
-  { name: "Utilities", color: "#85C1E9", icon: "Zap" },
-];
+import { ALL_CATEGORIES } from "./categoriesAndFilters";
 
 export const spendingByCategory = ({
   period,
@@ -20,7 +12,7 @@ export const spendingByCategory = ({
   startDate?: string;
 }): SpendingByCategoryType => {
   // generate random category data
-  const categories = categoryOptions.map((cat) => {
+  const categories = ALL_CATEGORIES.map((cat) => {
     const amount = faker.number.float({
       min: 200,
       max: 2000,

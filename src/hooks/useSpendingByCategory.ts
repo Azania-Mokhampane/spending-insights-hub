@@ -1,4 +1,4 @@
-import type { Period, SpendingByCategoryType } from "@/lib/types";
+import type { Period, SpendingByCategoryType } from "types";
 import { useQuery } from "@tanstack/react-query";
 
 export const SPENDING_BY_CATEGORY_QUERY_KEY = "spending-by-category";

@@ -29,7 +29,7 @@ export type MonthlySpendingTrendType = {
   averageTransaction: number;
 };
 
-export type CategoryType = {
+export type CategorySpendingType = {
   name: string;
   amount: number;
   percentage: number;
@@ -44,7 +44,7 @@ export type SpendingByCategoryType = {
     endDate: string;
   };
   totalAmount: number;
-  categories: CategoryType[];
+  categories: CategorySpendingType[];
 };
 
 export type GoalStatusType = "on_track" | "warning" | "exceeded";
@@ -57,4 +57,36 @@ export type BudgetGoal = {
   percentageUsed: number;
   daysRemaining: number;
   status: GoalStatusType;
+};
+
+export type SortBy = "date_desc" | "date_asc" | "amount_desc" | "amount_asc";
+
+export type TransactionType = {
+  id: string;
+  date: string;
+  merchant: string;
+  category: string;
+  amount: number;
+  description: string;
+  paymentMethod: string;
+  icon: string;
+  categoryColor: string;
+};
+
+export type PaginationType = {
+  total: number;
+  limit: number;
+  offset: number;
+  hasMore: boolean;
+};
+
+export type CategoryType = {
+  name: string;
+  color: string;
+  icon: string;
+};
+
+export type DateRangePresetType = {
+  label: string;
+  value: string;
 };

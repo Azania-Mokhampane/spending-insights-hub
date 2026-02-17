@@ -1,5 +1,5 @@
 import { formatCurrency } from "@/helpers/formatCurrency";
-import type { SpendingSummaryType } from "@/lib/types";
+import type { SpendingSummaryType } from "types";
 import {
   BarChart3,
   CreditCard,

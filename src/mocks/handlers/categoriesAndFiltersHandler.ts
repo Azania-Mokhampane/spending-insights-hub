@@ -1,16 +1,13 @@
 import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
-import type { Period } from "types";
-import { customerSpendingSummary } from "../data/customerSpendingSummary";
+import { categoriesAndFilters } from "../data/categoriesAndFilters";
 
-export const spendingSummaryHandler = http.get(
-  "/api/customers/:customerId/spending/summary",
-  async ({ params, request }) => {
+export const categoriesAndFiltersHandler = http.get(
+  "/api/customers/:customerId/filters",
+  async ({ params }) => {
     const { customerId } = params;
-    const url = new URL(request.url);
-    const period = (url.searchParams.get("period") ?? "30d") as Period;
 
-    await delay(600);
+    await delay(200);
 
     if (!customerId) {
       return HttpResponse.json(
@@ -26,6 +23,6 @@ export const spendingSummaryHandler = http.get(
       );
     }
 
-    return HttpResponse.json(customerSpendingSummary(period));
+    return HttpResponse.json(categoriesAndFilters());
   },
 );

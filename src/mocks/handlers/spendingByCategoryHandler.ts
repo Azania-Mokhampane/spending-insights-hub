@@ -1,4 +1,4 @@
-import type { Period } from "@/lib/types";
+import type { Period } from "types";
 import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
 import { spendingByCategory } from "../data/spendingByCategory";
