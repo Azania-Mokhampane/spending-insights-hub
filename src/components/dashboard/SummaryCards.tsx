@@ -60,7 +60,7 @@ const SummaryCards = ({ spendingSummary }: ISummaryCardsProps) => {
             {card.change !== undefined && (
               <div className="flex items-center gap-1 mt-2 text-sm">
                 {card.change >= 0 ? (
-                  <TrendingUp className="h-3.5 w-3.5 text-green-500" />
+                  <TrendingUp className="h-3.5 w-3.5 text-success" />
                 ) : (
                   <TrendingDown className="h-3.5 w-3.5 text-destructive" />
                 )}

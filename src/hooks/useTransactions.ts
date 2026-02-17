@@ -18,8 +18,8 @@ export const useTransactions = ({
   sortBy = "date_asc",
 }: {
   customerId: string;
-  page?: number;
-  perPage?: number;
+  page: number;
+  perPage: number;
   category?: string | null;
   startDate?: Date | null;
   endDate?: Date | null;
