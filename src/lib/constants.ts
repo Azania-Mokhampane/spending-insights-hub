@@ -1,8 +1,44 @@
-import type { Period } from "./types";
+import {
+  Car,
+  Film,
+  GraduationCap,
+  Heart,
+  Home,
+  Plane,
+  Shirt,
+  ShoppingBag,
+  ShoppingCart,
+  Smartphone,
+  Utensils,
+  Zap,
+} from "lucide-react";
+import type { Period, TransactionsSortBy } from "types";
 
 export const periodNames: Record<Period, string> = {
   "7d": "Last 7 days",
   "30d": "Last 30 days",
   "90d": "Last 90 days",
   "1y": "Last year",
+};
+
+export const ICON_PRESETS = {
+  ShoppingCart,
+  Film,
+  Car,
+  Utensils,
+  ShoppingBag,
+  Zap,
+  Home,
+  Heart,
+  Shirt,
+  Plane,
+  GraduationCap,
+  Smartphone,
+} as const;
+
+export const TRANSACTION_SORT_LABELS: Record<TransactionsSortBy, string> = {
+  date_desc: "Newest first",
+  date_asc: "Oldest first",
+  amount_desc: "Highest amount",
+  amount_asc: "Lowest amount",
 };

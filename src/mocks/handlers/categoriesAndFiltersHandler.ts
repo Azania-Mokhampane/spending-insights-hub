@@ -1,13 +1,13 @@
-import { http, HttpResponse, delay } from "msw";
+import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
+import { categoriesAndFilters } from "../data/categoriesAndFilters";
 
-export const customerProfileHandler = http.get(
-  "/api/customers/:customerId/profile",
+export const categoriesAndFiltersHandler = http.get(
+  "/api/customers/:customerId/filters",
   async ({ params }) => {
     const { customerId } = params;
 
-    // this simulates network latency
-    await delay(600);
+    await delay(200);
 
     if (!customerId) {
       return HttpResponse.json(
@@ -16,15 +16,13 @@ export const customerProfileHandler = http.get(
       );
     }
 
-    const customer = mockCustomers[customerId as string];
-
-    if (!customer) {
+    if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
         { status: 404 },
       );
     }
 
-    return HttpResponse.json(customer);
+    return HttpResponse.json(categoriesAndFilters());
   },
 );

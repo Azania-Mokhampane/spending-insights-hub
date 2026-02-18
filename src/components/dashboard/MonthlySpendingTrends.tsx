@@ -1,4 +1,4 @@
-import type { MonthlySpendingTrendType } from "@/lib/types";
+import type { MonthlySpendingTrendType } from "types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   Bar,
@@ -62,7 +62,7 @@ const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
                 axisLine={false}
                 tickLine={false}
                 label={{
-                  value: "Txns",
+                  value: "Transactions",
                   angle: 90,
                   position: "insideRight",
                   fontSize: 11,
@@ -71,7 +71,7 @@ const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
               />
               <Tooltip
                 formatter={(value: number, name: string) => [
-                  name === "totalSpent" ? formatCurrency(value) : value,
+                  name === "transactionCount" ? value : formatCurrency(value),
                   name === "totalSpent"
                     ? "Total Spent"
                     : name === "transactionCount"
@@ -100,7 +100,14 @@ const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
                 yAxisId="amount"
                 fill="var(--primary)"
                 radius={[4, 4, 0, 0]}
-                opacity={0.85}
+              />
+              <Line
+                dataKey="averageTransaction"
+                yAxisId="amount"
+                type="natural"
+                stroke="var(--chart-4)"
+                strokeWidth={2}
+                dot={{ r: 3, fill: "var(--chart-4)" }}
               />
               <Line
                 dataKey="transactionCount"
@@ -109,14 +116,6 @@ const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
                 stroke="var(--chart-5)"
                 strokeWidth={2}
                 dot={{ r: 3, fill: "var(--chart-5)" }}
-              />
-              <Line
-                dataKey="averageTransaction"
-                yAxisId="count"
-                type="natural"
-                stroke="var(--chart-4)"
-                strokeWidth={2}
-                dot={{ r: 3, fill: "var(--chart-4)" }}
               />
             </ComposedChart>
           </ResponsiveContainer>

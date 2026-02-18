@@ -1,7 +1,7 @@
-import type { Period } from "@/lib/types";
 import { delay, http, HttpResponse } from "msw";
-import { mockCustomerSpendingSummary } from "../data/customerSpendingSummary";
 import { mockCustomers } from "../data/customers";
+import type { Period } from "types";
+import { customerSpendingSummary } from "../data/customerSpendingSummary";
 
 export const spendingSummaryHandler = http.get(
   "/api/customers/:customerId/spending/summary",
@@ -19,16 +19,13 @@ export const spendingSummaryHandler = http.get(
       );
     }
 
-    // simulate a non existing customer
-    const customer = mockCustomers[customerId as string];
-
-    if (!customer) {
+    if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
         { status: 404 },
       );
     }
 
-    return HttpResponse.json(mockCustomerSpendingSummary[period]);
+    return HttpResponse.json(customerSpendingSummary(period));
   },
 );

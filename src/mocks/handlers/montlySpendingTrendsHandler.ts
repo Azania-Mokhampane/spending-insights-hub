@@ -8,7 +8,7 @@ export const monthlySpendingTrendsHandler = http.get(
     const { customerId } = params;
     const url = new URL(request.url);
     const monthsParam = Number(url.searchParams.get("months"));
-    const months = Math.min(Math.max(monthsParam || 12, 1), 24); // default 12, max 24
+    const months = Math.min(Math.max(monthsParam || 12, 1), 24);
 
     await delay(600);
 
@@ -19,9 +19,7 @@ export const monthlySpendingTrendsHandler = http.get(
       );
     }
 
-    const customer = mockCustomers[customerId as string];
-
-    if (!customer) {
+    if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
         { status: 404 },

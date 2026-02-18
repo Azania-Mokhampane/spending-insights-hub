@@ -5,3 +5,5 @@ export const formatMonth = (month: string) => {
 
   return format(date, "MMM yy");
 };
+
+export const formatToISODate = (date: Date) => format(date, "yyyy-MM-dd");

@@ -1,9 +1,9 @@
-import type { MonthlySpendingTrendType } from "@/lib/types";
+import type { MonthlySpendingTrendType } from "types";
 import { useQuery } from "@tanstack/react-query";
 
-export const CUSTOMER_MONTHLY_TRENDS_QUERY_KEY = "customer-monthly-trends";
+export const MONTHLY_TRENDS_QUERY_KEY = "monthly-trends";
 
-export const useCustomerMonthlyTrends = ({
+export const useMonthlyTrends = ({
   months,
   customerId,
 }: {
@@ -11,7 +11,7 @@ export const useCustomerMonthlyTrends = ({
   customerId: string;
 }) => {
   return useQuery<{ trends: MonthlySpendingTrendType[] }>({
-    queryKey: [CUSTOMER_MONTHLY_TRENDS_QUERY_KEY, months, customerId],
+    queryKey: [MONTHLY_TRENDS_QUERY_KEY, months, customerId],
     queryFn: async () => {
       const res = await fetch(
         `/api/customers/${customerId}/spending/trends?months=${months}`,
@@ -21,6 +21,5 @@ export const useCustomerMonthlyTrends = ({
       }
       return res.json();
     },
-    staleTime: "static",
   });
 };
