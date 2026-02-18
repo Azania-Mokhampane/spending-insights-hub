@@ -46,7 +46,10 @@ const SummaryCards = ({ spendingSummary }: ISummaryCardsProps) => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div
+      data-test="summary-cards-grid"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+    >
       {cards.map((card) => (
         <Card key={card.label} className="relative overflow-hidden h-full">
           <CardContent>

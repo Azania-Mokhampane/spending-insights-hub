@@ -24,7 +24,10 @@ function App() {
             <Route path={DASHBOARD_ROUTE} element={<DashboardLayout />}>
               <Route index element={<Overview />} />
               <Route
-                path={DASHBOARD_TRANSACTIONS_ROUTE}
+                path={DASHBOARD_TRANSACTIONS_ROUTE.replace(
+                  DASHBOARD_ROUTE,
+                  "",
+                ).slice(1)}
                 element={<Transactions />}
               />
             </Route>

@@ -41,7 +41,7 @@ const TransactionsFilters = ({
   return (
     <div className="flex flex-wrap gap-2 items-center">
       <Select value={category} onValueChange={setCategory}>
-        <SelectTrigger size="sm">
+        <SelectTrigger size="sm" aria-label="Transactions category filter">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -61,6 +61,8 @@ const TransactionsFilters = ({
         <Popover>
           <PopoverTrigger asChild>
             <Button
+              data-testid="start-date-filter"
+              aria-label="Start date filter"
               variant="outline"
               size="xs"
               className={cn(
@@ -87,6 +89,8 @@ const TransactionsFilters = ({
         <Popover>
           <PopoverTrigger asChild>
             <Button
+              data-testid="end-date-filter"
+              aria-label="End date filter"
               variant="outline"
               size="xs"
               className={cn(
@@ -114,6 +118,8 @@ const TransactionsFilters = ({
         </Popover>
         {(startDate || endDate) && (
           <Button
+            data-testid="clear-date-filter"
+            aria-label="Clear date filter"
             variant="secondary"
             size="xs"
             className="h-7 px-2 text-xs"

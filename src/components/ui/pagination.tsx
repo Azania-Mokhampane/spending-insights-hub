@@ -35,7 +35,10 @@ const Pagination = ({
   if (totalPages == 0) return null;
 
   return (
-    <div className="flex items-center justify-between px-4 md:px-6 pt-4">
+    <div
+      data-test="transactions-pagination"
+      className="flex items-center justify-between px-4 md:px-6 pt-4"
+    >
       <div className="flex items-center space-x-2">
         <p className="text-xs md:text-sm font-medium">Rows per page</p>
         <Select
@@ -45,7 +48,11 @@ const Pagination = ({
           }}
           value={String(perPage)}
         >
-          <SelectTrigger size="sm" className="h-8 w-20">
+          <SelectTrigger
+            size="sm"
+            className="h-8 w-20"
+            aria-label="Pagination per page select"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

@@ -30,7 +30,10 @@ const SpendingSummaryWithFilter = ({
           value={period}
           onValueChange={(value) => setPeriod(value as Period)}
         >
-          <SelectTrigger className="w-40 h-9 text-sm">
+          <SelectTrigger
+            className="w-40 h-9 text-sm"
+            aria-label="Summary period filter select"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

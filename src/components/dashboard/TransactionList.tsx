@@ -90,6 +90,7 @@ const TransactionList = ({ customerId }: ITransactionListProps) => {
           errorComponent={customerTransactionsError?.message}
         >
           <Table
+            data-test="transactions-table"
             className={cn(
               "hidden md:inline-table",
               isFetching &&
