@@ -60,7 +60,7 @@ const TransactionList = ({ customerId }: ITransactionListProps) => {
 
   useEffect(() => {
     setPage(1);
-  }, [category, startDate, endDate, sortBy]);
+  }, [category, startDate, endDate, sortBy, setPage]);
 
   return (
     <Card>
