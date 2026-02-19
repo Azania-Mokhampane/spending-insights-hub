@@ -8,13 +8,6 @@ export const customerProfileHandler = http.get(
 
     await delay(600);
 
-    if (!customerId) {
-      return HttpResponse.json(
-        { message: "Customer ID is required" },
-        { status: 400 },
-      );
-    }
-
     if (!mockCustomers.has(customerId as string)) {
       return HttpResponse.json(
         { message: "Customer not found" },
