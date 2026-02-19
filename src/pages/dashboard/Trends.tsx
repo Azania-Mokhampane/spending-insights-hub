@@ -2,8 +2,8 @@ import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
 import DateRangeFilters from "@/components/dashboard/DateRangeFilters";
 import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
 import PeriodFilter from "@/components/dashboard/PeriodFilter";
-import PageHeader from "@/components/ui/page-header";
-import { State } from "@/components/ui/state";
+import PageHeader from "@/components/common/PageHeader";
+import { State } from "@/components/common/State";
 
 import {
   useEndDateFilter,

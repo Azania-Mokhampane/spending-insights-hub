@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
@@ -12,6 +12,6 @@ RUN yarn build
 
 RUN yarn global add serve
 
-EXPOSE 3000
+EXPOSE 4173
 
-CMD ["serve", "-s", "dist", "-l", "3000"]
+CMD ["serve", "-s", "dist", "-l", "4173"]

@@ -1,8 +1,8 @@
 import type { BudgetGoal } from "types";
 import { AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 const statusConfig = {
   on_track: {

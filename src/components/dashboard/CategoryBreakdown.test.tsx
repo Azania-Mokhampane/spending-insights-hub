@@ -67,4 +67,11 @@ describe("CategoryBreakdown", () => {
       screen.getByText("No spending by category data available"),
     ).toBeInTheDocument();
   });
+
+  it("renders transaction count badge for each category", () => {
+    render(<CategoryBreakdown spendingByCategory={mockSpendingByCategory} />);
+    expect(screen.getByText("10 Transactions")).toBeInTheDocument();
+    expect(screen.getByText("5 Transactions")).toBeInTheDocument();
+    expect(screen.getByText("8 Transactions")).toBeInTheDocument();
+  });
 });

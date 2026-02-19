@@ -5,12 +5,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "@/components/ui/select";
 import { TRANSACTION_SORT_LABELS } from "@/lib/constants";
 import { ArrowDownUp, Filter } from "lucide-react";
-
-import CategoryIcon from "./CategoryIcon";
-import DateRangeFilters from "./DateRangeFilters";
+import CategoryIcon from "../CategoryIcon";
+import DateRangeFilters from "../DateRangeFilters";
 
 interface ITransactionsFiltersProps {
   categories: CategoryType[];

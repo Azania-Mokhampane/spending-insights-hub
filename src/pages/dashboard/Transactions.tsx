@@ -1,7 +1,7 @@
-import SpendingSummaryWithFilter from "@/components/dashboard/SpendingSummaryWithFilter";
-import TransactionList from "@/components/dashboard/TransactionList";
-import PageHeader from "@/components/ui/page-header";
+import TransactionList from "@/components/dashboard/transactions/TransactionList";
+import PageHeader from "@/components/common/PageHeader";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
+import SpendingSummaryWithFilter from "@/components/dashboard/transactions/SpendingSummaryWithFilter";
 
 const TransactionsPage = () => {
   const customerId = MOCK_CUSTOMER_ID;

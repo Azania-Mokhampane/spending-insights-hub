@@ -1,4 +1,4 @@
-import type { MonthlySpendingTrendType, MonthRange } from "types";
+import type { MonthlySpendingTrendType } from "types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   Bar,
@@ -14,6 +14,7 @@ import {
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { formatMonth } from "@/helpers/dateUtils";
 import { Button } from "../ui/button";
+import { MONTH_RANGE_OPTIONS } from "@/lib/constants";
 
 interface IMonthlySpendingTrendsProps {
   trends: MonthlySpendingTrendType[];
@@ -38,7 +39,7 @@ const MonthlySpendingTrends = ({
         </CardTitle>
         {monthRange && (
           <div className="flex gap-1">
-            {([6, 12, 24] as MonthRange[]).map((m) => (
+            {MONTH_RANGE_OPTIONS.map((m) => (
               <Button
                 key={m}
                 variant={monthRange === m ? "default" : "outline"}
@@ -53,7 +54,7 @@ const MonthlySpendingTrends = ({
         )}
       </CardHeader>
       <CardContent>
-        <div className="h-70">
+        <div className="h-70 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={data}

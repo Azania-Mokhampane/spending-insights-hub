@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { format } from "date-fns";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { cn } from "@/lib/utils";
@@ -10,8 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import Pagination from "../ui/pagination";
+} from "../../ui/table";
 import {
   useCategoryFilter,
   useEndDateFilter,
@@ -20,13 +19,14 @@ import {
   useSortByFilter,
   useStartDateFilter,
 } from "@/hooks/filters/transactionsFilters";
-import CategoryIcon from "./CategoryIcon";
-import { Badge } from "../ui/badge";
-import TransactionsFilters from "./TransactionsFilters";
+import CategoryIcon from "../CategoryIcon";
+import { Badge } from "../../ui/badge";
 import { useTransactions } from "@/hooks/useTransactions";
 import { useCategoriesAndFilters } from "@/hooks/useCategoriesAndFilters";
-import { State } from "../ui/state";
+import { State } from "../../common/State";
 import { useEffect } from "react";
+import Pagination from "../../common/Pagination";
+import TransactionsFilters from "./TransactionsFilters";
 
 interface ITransactionListProps {
   customerId: string;

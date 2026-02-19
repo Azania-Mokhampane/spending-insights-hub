@@ -1,8 +1,8 @@
-import SummaryCards from "./SummaryCards";
 import { usePeriodSearchParams } from "@/hooks/filters/usePeriodSearchParams";
 import { useSpendingSummary } from "@/hooks/useSpendingSummary";
-import PeriodFilter from "./PeriodFilter";
-import { State } from "../ui/state";
+import PeriodFilter from "../PeriodFilter";
+import { State } from "@/components/common/State";
+import SummaryCards from "../SummaryCards";
 
 interface ISpendingSummaryWithFilterProps {
   customerId: string;
