@@ -18,7 +18,7 @@ export const budgetGoals = (): BudgetGoal[] => {
   const daysRemaining = getDaysRemainingInMonth();
 
   const goals = faker.helpers
-    .arrayElements(ALL_CATEGORIES, { min: 2, max: 5 })
+    .arrayElements(ALL_CATEGORIES, { min: 2, max: 10 })
     .map((category, index) => {
       const monthlyBudget = faker.number.float({
         min: 500,

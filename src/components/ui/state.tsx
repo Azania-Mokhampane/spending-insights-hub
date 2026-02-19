@@ -66,9 +66,6 @@ export const State = ({
               <Inbox className="h-6 w-6 text-muted-foreground" />
             </div>
             <p className="mt-4 text-sm font-medium">No data found</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Try adjusting your filters
-            </p>
           </div>
         )}
       </>
