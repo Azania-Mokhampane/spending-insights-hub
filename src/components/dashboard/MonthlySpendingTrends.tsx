@@ -1,4 +1,4 @@
-import type { MonthlySpendingTrendType } from "types";
+import type { MonthlySpendingTrendType, MonthRange } from "types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   Bar,
@@ -13,22 +13,44 @@ import {
 } from "recharts";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { formatMonth } from "@/helpers/dateUtils";
+import { Button } from "../ui/button";
 
 interface IMonthlySpendingTrendsProps {
   trends: MonthlySpendingTrendType[];
+  monthRange?: number;
+  setMonthRange?: (months: number) => void;
 }
 
-const MonthlySpendingTrends = ({ trends }: IMonthlySpendingTrendsProps) => {
+const MonthlySpendingTrends = ({
+  trends,
+  monthRange,
+  setMonthRange,
+}: IMonthlySpendingTrendsProps) => {
   const data = trends.map((trend) => ({
     ...trend,
     monthLabel: formatMonth(trend.month),
   }));
   return (
     <Card className="h-full">
-      <CardHeader>
+      <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-base font-semibold">
           Monthly Spending Trends
         </CardTitle>
+        {monthRange && (
+          <div className="flex gap-1">
+            {([6, 12, 24] as MonthRange[]).map((m) => (
+              <Button
+                key={m}
+                variant={monthRange === m ? "default" : "outline"}
+                size="sm"
+                className="h-7 text-xs px-2.5"
+                onClick={() => setMonthRange?.(m)}
+              >
+                {m}M
+              </Button>
+            ))}
+          </div>
+        )}
       </CardHeader>
       <CardContent>
         <div className="h-70">

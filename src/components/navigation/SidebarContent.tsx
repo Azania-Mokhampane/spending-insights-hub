@@ -1,6 +1,5 @@
 import { useCustomerProfile } from "@/hooks/useCustomerProfile";
 import {
-  BarChart3,
   ChevronsLeft,
   ChevronsRight,
   LayoutDashboard,
@@ -57,11 +56,10 @@ export const SidebarContent = ({
         to={HOME_ROUTE}
         className="h-14 flex items-center gap-2.5 px-4 border-b shrink-0"
       >
-        <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
-          <BarChart3 className="h-4 w-4 text-primary-foreground" />
-        </div>
-        {!collapsed && (
-          <span className="text-base font-bold tracking-tight">Capitec</span>
+        {collapsed ? (
+          <img src="/symbol.svg" alt="Logo" className="h-8 w-8 shrink-0" />
+        ) : (
+          <img src="/logo.svg" alt="Brand Logo" className="h-6 shrink-0" />
         )}
       </Link>
 

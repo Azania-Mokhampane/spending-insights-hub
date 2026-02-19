@@ -3,7 +3,7 @@ import TransactionList from "@/components/dashboard/TransactionList";
 import PageHeader from "@/components/ui/page-header";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
-const Transactions = () => {
+const TransactionsPage = () => {
   const customerId = MOCK_CUSTOMER_ID;
 
   return (
@@ -18,4 +18,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default TransactionsPage;
