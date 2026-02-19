@@ -34,3 +34,6 @@ export const useSortByFilter = () =>
     parse: sortByParser.parse,
     serialize: sortByParser.serialize,
   });
+
+export const useMonthRangeFilter = () =>
+  useQueryState("monthRange", parseAsInteger.withDefault(12));

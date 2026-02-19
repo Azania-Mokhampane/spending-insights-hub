@@ -12,6 +12,9 @@ export const useSpendingSummary = ({
   return useQuery<SpendingSummaryType>({
     queryKey: [SPENDING_SUMMARY_QUERY_KEY, period, customerId],
     queryFn: async () => {
+      if (!customerId) {
+        throw new Error("Customer ID is required");
+      }
       const res = await fetch(
         `/api/customers/${customerId}/spending/summary?period=${period}`,
       );

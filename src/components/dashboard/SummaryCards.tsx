@@ -51,17 +51,20 @@ const SummaryCards = ({ spendingSummary }: ISummaryCardsProps) => {
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
     >
       {cards.map((card) => (
-        <Card key={card.label} className="relative overflow-hidden h-full">
+        <Card
+          key={card.label}
+          className="relative overflow-hidden h-full p-3 px-0"
+        >
           <CardContent>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-medium text-muted-foreground">
+              <span className="text-xs md:text-sm font-medium text-muted-foreground">
                 {card.label}
               </span>
               <card.icon className="h-4 w-4 text-muted-foreground" />
             </div>
-            <p className="text-2xl tracking-tight">{card.value}</p>
+            <p className="text-lg md:text-2xl tracking-tight">{card.value}</p>
             {card.change !== undefined && (
-              <div className="flex items-center gap-1 mt-2 text-sm">
+              <div className="flex items-center gap-1 mt-2 text-xs md:text-sm">
                 {card.change >= 0 ? (
                   <TrendingUp className="h-3.5 w-3.5 text-success" />
                 ) : (

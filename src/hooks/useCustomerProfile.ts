@@ -7,6 +7,9 @@ export const useCustomerProfile = (customerId: string) => {
   return useQuery<CustomerProfileType>({
     queryKey: [CUSTOMER_PROFILE_QUERY_KEY, customerId],
     queryFn: async () => {
+      if (!customerId) {
+        throw new Error("Customer ID is required");
+      }
       const res = await fetch(`/api/customers/${customerId}/profile`);
 
       if (!res.ok) {

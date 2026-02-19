@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import CategoryIcon from "./CategoryIcon";
 import { PieChart as PieChartIcon } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 interface ICategoryBreakdownProps {
   spendingByCategory: SpendingByCategoryType;
@@ -52,6 +53,9 @@ const CategoryBreakdown = ({ spendingByCategory }: ICategoryBreakdownProps) => {
                     <Label
                       content={({ viewBox }) => {
                         if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          const formattedAmount = formatCurrency(totalAmount);
+                          const isLong = formattedAmount.length > 10;
+
                           return (
                             <text
                               x={viewBox.cx}
@@ -62,16 +66,18 @@ const CategoryBreakdown = ({ spendingByCategory }: ICategoryBreakdownProps) => {
                               <tspan
                                 x={viewBox.cx}
                                 y={(viewBox.cy || 0) - 10}
-                                className="fill-muted-foreground"
+                                className="fill-muted-foreground text-xs"
                               >
                                 Total
                               </tspan>
                               <tspan
                                 x={viewBox.cx}
                                 y={(viewBox.cy || 0) + 10}
-                                className="fill-foreground text-xl font-bold"
+                                className={`fill-foreground font-bold ${
+                                  isLong ? "text-sm" : "text-xl"
+                                }`}
                               >
-                                {formatCurrency(totalAmount)}
+                                {formattedAmount}
                               </tspan>
                             </text>
                           );
@@ -91,7 +97,7 @@ const CategoryBreakdown = ({ spendingByCategory }: ICategoryBreakdownProps) => {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="flex-1 w-full space-y-2">
+            <div className="flex-1 w-full space-y-4">
               {categories.map((cat) => (
                 <div key={cat.name} className="flex items-center gap-2">
                   <div
@@ -102,9 +108,15 @@ const CategoryBreakdown = ({ spendingByCategory }: ICategoryBreakdownProps) => {
                   </div>
                   <div className="flex-1 min-w-0 overflow-hidden">
                     <div className="flex items-center justify-between text-sm gap-1">
-                      <span className="font-medium truncate text-xs sm:text-sm">
-                        {cat.name}
-                      </span>
+                      <div className="flex flex-row gap-1 items-center">
+                        <p className="font-medium truncate text-xs sm:text-sm">
+                          {cat.name}
+                        </p>
+                        <Badge variant="outline" className="text-xs">
+                          {cat.transactionCount} Transactions
+                        </Badge>
+                      </div>
+
                       <span className="font-mono text-[11px] text-muted-foreground whitespace-nowrap">
                         <span className="hidden xl:inline">
                           {formatCurrency(cat.amount)} ·{" "}

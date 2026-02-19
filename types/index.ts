@@ -94,3 +94,5 @@ export type DateRangePresetType = {
   label: string;
   value: string;
 };
+
+export type MonthRange = 6 | 12 | 24;

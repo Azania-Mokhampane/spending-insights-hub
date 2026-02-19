@@ -70,6 +70,7 @@ const TransactionList = ({ customerId }: ITransactionListProps) => {
 
       <div className="flex  px-4 md:px-6">
         <TransactionsFilters
+          disabled={customerTransactionsLoading}
           categories={categoriesAndFilters?.categories || []}
           sortBy={sortBy}
           setSortBy={setSortby}

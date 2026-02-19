@@ -2,6 +2,7 @@ import type { BudgetGoal } from "types";
 import { AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
+import { Badge } from "../ui/badge";
 
 const statusConfig = {
   on_track: {
@@ -39,11 +40,19 @@ const BudgetGoals = ({ goals }: IBudgetGoalsProps) => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <StatusIcon className={`h-4 w-4 ${config.className}`} />
-                  <span className="text-sm font-medium">{goal.category}</span>
+                  <p className="text-sm font-medium">{goal.category}</p>
+                  <Badge
+                    variant={
+                      goal.status === "exceeded" ? "destructive" : "secondary"
+                    }
+                    className={`text-[10px] ${goal.status === "on_track" ? "bg-success/15 text-success border-transparent" : goal.status === "warning" ? "bg-warning/15 text-warning border-transparent" : ""}`}
+                  >
+                    {config.label}
+                  </Badge>
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  {goal.daysRemaining}d left
-                </span>
+                <p className="text-xs text-muted-foreground">
+                  {goal.percentageUsed}% - {goal.daysRemaining}d left
+                </p>
               </div>
               <div className="relative">
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
@@ -53,14 +62,10 @@ const BudgetGoals = ({ goals }: IBudgetGoalsProps) => {
                   />
                 </div>
               </div>
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span className="font-mono">
-                  {formatCurrency(goal.currentSpent)}
-                </span>
-                <span className="font-mono">
-                  s of {formatCurrency(goal.monthlyBudget)}
-                </span>
-              </div>
+              <p className="flex items-center font-mono text-xs text-muted-foreground">
+                {formatCurrency(goal.currentSpent)} of{" "}
+                {formatCurrency(goal.monthlyBudget)}
+              </p>
             </div>
           );
         })}

@@ -7,13 +7,10 @@ import {
   SelectValue,
 } from "../ui/select";
 import { TRANSACTION_SORT_LABELS } from "@/lib/constants";
-import { ArrowDownUp, CalendarIcon, Filter } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { Calendar } from "../ui/calendar";
+import { ArrowDownUp, Filter } from "lucide-react";
+
 import CategoryIcon from "./CategoryIcon";
+import DateRangeFilters from "./DateRangeFilters";
 
 interface ITransactionsFiltersProps {
   categories: CategoryType[];
@@ -25,6 +22,7 @@ interface ITransactionsFiltersProps {
   setStartDate: (date: Date | null) => void;
   category: string;
   setCategory: (category: string) => void;
+  disabled?: boolean;
 }
 
 const TransactionsFilters = ({
@@ -37,10 +35,11 @@ const TransactionsFilters = ({
   setStartDate,
   category,
   setCategory,
+  disabled,
 }: ITransactionsFiltersProps) => {
   return (
     <div className="flex flex-wrap gap-2 items-center">
-      <Select value={category} onValueChange={setCategory}>
+      <Select value={category} onValueChange={setCategory} disabled={disabled}>
         <SelectTrigger size="sm" aria-label="Transactions category filter">
           <SelectValue />
         </SelectTrigger>
@@ -57,82 +56,14 @@ const TransactionsFilters = ({
           ))}
         </SelectContent>
       </Select>
-      <div className="flex items-center gap-1.5">
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              data-testid="start-date-filter"
-              aria-label="Start date filter"
-              variant="outline"
-              size="xs"
-              className={cn(
-                "h-7 px-2 text-xs justify-start font-normal",
-                !startDate && "text-muted-foreground",
-              )}
-            >
-              <CalendarIcon className="mr-1 h-3 w-3" />
-              {startDate ? format(startDate, "dd MMM yy") : "From"}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={startDate ?? undefined}
-              onSelect={(date) => setStartDate(date ?? null)}
-              disabled={(date) => date > new Date()}
-              autoFocus
-              className="p-3 pointer-events-auto"
-            />
-          </PopoverContent>
-        </Popover>
-        <span className="text-xs text-muted-foreground">–</span>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              data-testid="end-date-filter"
-              aria-label="End date filter"
-              variant="outline"
-              size="xs"
-              className={cn(
-                "h-7 px-2 text-xs justify-start font-normal",
-                !endDate && "text-muted-foreground",
-              )}
-            >
-              <CalendarIcon className="mr-1 h-3 w-3" />
-              {endDate ? format(endDate, "dd MMM yy") : "To"}
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={startDate ?? undefined}
-              onSelect={(date) => setEndDate(date ?? null)}
-              disabled={(date) =>
-                date > new Date() || (startDate ? date < startDate : false)
-              }
-              autoFocus
-              required={false}
-              className="p-3 pointer-events-auto"
-            />
-          </PopoverContent>
-        </Popover>
-        {(startDate || endDate) && (
-          <Button
-            data-testid="clear-date-filter"
-            aria-label="Clear date filter"
-            variant="secondary"
-            size="xs"
-            className="h-7 px-2 text-xs"
-            onClick={() => {
-              setStartDate(null);
-              setEndDate(null);
-            }}
-          >
-            Clear
-          </Button>
-        )}
-      </div>
-      <Select value={sortBy} onValueChange={setSortBy}>
+      <DateRangeFilters
+        disabled={disabled}
+        endDate={endDate}
+        setEndDate={setEndDate}
+        startDate={startDate}
+        setStartDate={setStartDate}
+      />
+      <Select value={sortBy} onValueChange={setSortBy} disabled={disabled}>
         <SelectTrigger size="sm">
           <ArrowDownUp className="h-4 w-4" />
           <SelectValue />

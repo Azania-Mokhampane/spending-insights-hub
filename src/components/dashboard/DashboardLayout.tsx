@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import { BarChart3, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -16,10 +16,7 @@ export default function DashboardLayout() {
       {/* Mobile top bar */}
       <div className="fixed top-0 left-0 right-0 z-40 h-14 border-b bg-card flex items-center justify-between px-4 md:hidden">
         <Link to={HOME_ROUTE} className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-            <BarChart3 className="h-4 w-4 text-primary-foreground" />
-          </div>
-          <span className="text-base font-bold tracking-tight">Capitec</span>
+          <img src="/logo.svg" alt="Brand Logo" className="h-5 shrink-0" />
         </Link>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>

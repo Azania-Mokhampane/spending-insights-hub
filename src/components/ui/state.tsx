@@ -1,4 +1,4 @@
-import { AlertCircle, Inbox, Loader2 } from "lucide-react";
+import { AlertCircle, Inbox } from "lucide-react";
 import type { ReactNode } from "react";
 
 type StateWrapperProps = {
@@ -7,6 +7,7 @@ type StateWrapperProps = {
   isError?: boolean;
   isEmpty?: boolean;
   loadingComponent?: ReactNode;
+  loadingText?: string;
   errorComponent?: ReactNode;
   emptyComponent?: ReactNode;
 };
@@ -16,6 +17,7 @@ export const State = ({
   isLoading = false,
   isError = false,
   isEmpty = false,
+  loadingText,
   loadingComponent,
   errorComponent,
   emptyComponent,
@@ -24,9 +26,13 @@ export const State = ({
     return (
       <>
         {loadingComponent || (
-          <div className="flex flex-col items-center justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-            <p className="mt-4 text-sm text-muted-foreground">Loading...</p>
+          <div className="flex flex-col items-center justify-center animate-pulse">
+            <div className="">
+              <img src="/logo-dark.svg" alt="Loading" className="h-36 w-36" />
+            </div>
+            <p className="text-sm text-muted-foreground">
+              {loadingText ?? "Loading..."}
+            </p>
           </div>
         )}
       </>
@@ -60,9 +66,6 @@ export const State = ({
               <Inbox className="h-6 w-6 text-muted-foreground" />
             </div>
             <p className="mt-4 text-sm font-medium">No data found</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Try adjusting your filters
-            </p>
           </div>
         )}
       </>
