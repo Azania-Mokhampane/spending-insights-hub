@@ -1,7 +1,7 @@
 import type { CustomerProfileType } from "types";
-import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarFallback } from "../../ui/avatar";
 import { getCustomerInitials } from "@/helpers/getCustomerInitials";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../ui/badge";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { format } from "date-fns";
 

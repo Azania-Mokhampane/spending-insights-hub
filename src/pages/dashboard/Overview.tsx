@@ -1,17 +1,16 @@
-import CustomerSummary from "@/components/dashboard/CustomerSummary";
-import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
-import SectionHeader from "@/components/dashboard/SectionHeader";
-import SummaryCards from "@/components/dashboard/SummaryCards";
+import CustomerSummary from "@/components/dashboard/overview/CustomerSummary";
+import MonthlySpendingTrends from "@/components/dashboard/charts/MonthlySpendingTrends";
 import { useMonthlyTrends } from "@/hooks/useMonthlyTrends";
-
 import { useCustomerProfile } from "@/hooks/useCustomerProfile";
 import { useSpendingSummary } from "@/hooks/useSpendingSummary";
 import { useSpendingByCategory } from "@/hooks/useSpendingByCategory";
-import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
 import { DASHBOARD_TRANSACTIONS_ROUTE, DASHBOARD_TRENDS_ROUTE } from "@/routes";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
-import { State } from "@/components/ui/state";
+import { State } from "@/components/common/State";
 import { Skeleton } from "@/components/ui/skeleton";
+import SectionHeader from "@/components/dashboard/overview/SectionHeader";
+import SummaryCards from "@/components/dashboard/transactions/SummaryCards";
+import CategoryBreakdown from "@/components/dashboard/charts/categories/CategoryBreakdown";
 
 const OverviewPage = () => {
   const customerId = MOCK_CUSTOMER_ID;

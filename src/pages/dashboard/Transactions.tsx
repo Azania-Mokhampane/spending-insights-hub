@@ -1,6 +1,5 @@
-import SpendingSummaryWithFilter from "@/components/dashboard/SpendingSummaryWithFilter";
-import TransactionList from "@/components/dashboard/TransactionList";
-import PageHeader from "@/components/ui/page-header";
+import PageHeader from "@/components/common/PageHeader";
+import TransactionList from "@/components/dashboard/transactions/TransactionList";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
 const TransactionsPage = () => {
@@ -12,7 +11,6 @@ const TransactionsPage = () => {
         title="Transactions"
         caption="Browse and filter all your transactions"
       />
-      <SpendingSummaryWithFilter customerId={customerId} />
       <TransactionList customerId={customerId} />
     </div>
   );

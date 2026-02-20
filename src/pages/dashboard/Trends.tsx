@@ -1,25 +1,26 @@
-import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
-import DateRangeFilters from "@/components/dashboard/DateRangeFilters";
-import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
-import PeriodFilter from "@/components/dashboard/PeriodFilter";
-import PageHeader from "@/components/ui/page-header";
-import { State } from "@/components/ui/state";
+import DateRangeFilters from "@/components/dashboard/filters/DateRangeFilters";
+import MonthlySpendingTrends from "@/components/dashboard/charts/MonthlySpendingTrends";
+import PeriodFilter from "@/components/dashboard/filters/PeriodFilter";
+import PageHeader from "@/components/common/PageHeader";
+import { State } from "@/components/common/State";
 
 import {
   useEndDateFilter,
   useMonthRangeFilter,
+  usePeriodFilter,
   useStartDateFilter,
 } from "@/hooks/filters/transactionsFilters";
-import { usePeriodSearchParams } from "@/hooks/filters/usePeriodSearchParams";
 import { useMonthlyTrends } from "@/hooks/useMonthlyTrends";
 import { useSpendingByCategory } from "@/hooks/useSpendingByCategory";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
+import { useDateRangePresets } from "@/hooks/useCategoriesAndFilters";
+import CategoryBreakdown from "@/components/dashboard/charts/categories/CategoryBreakdown";
 
 const TrendsPage = () => {
   const customerId = MOCK_CUSTOMER_ID;
 
   const [monthRange, setMonthRange] = useMonthRangeFilter();
-  const [period, setPeriod] = usePeriodSearchParams();
+  const [period, setPeriod] = usePeriodFilter();
   const [startDate, setStartDate] = useStartDateFilter();
   const [endDate, setEndDate] = useEndDateFilter();
   const {
@@ -40,6 +41,7 @@ const TrendsPage = () => {
     startDate,
     endDate,
   });
+  const { data: dateRangePresets } = useDateRangePresets(customerId);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       <PageHeader
@@ -67,6 +69,7 @@ const TrendsPage = () => {
               ariaLabel="Spending by category period filter"
               period={period}
               setPeriod={setPeriod}
+              dateRangePresets={dateRangePresets || []}
             />
             <DateRangeFilters
               disabled={isSpendingByCategoryPending}

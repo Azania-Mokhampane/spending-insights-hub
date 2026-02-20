@@ -13,7 +13,6 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0",
-    port: 3000,
   },
   test: {
     globals: true,
@@ -25,9 +24,10 @@ export default defineConfig({
       reporter: ["text", "html"],
       exclude: [
         "node_modules",
-        "src/tests/setup.ts",
+        "src/tests/**",
         "src/**/*.d.ts",
         "src/main.tsx",
+        "src/components/ui/**",
       ],
     },
   },

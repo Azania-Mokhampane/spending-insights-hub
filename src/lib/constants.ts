@@ -12,14 +12,7 @@ import {
   Utensils,
   Zap,
 } from "lucide-react";
-import type { Period, TransactionsSortBy } from "types";
-
-export const periodNames: Record<Period, string> = {
-  "7d": "Last 7 days",
-  "30d": "Last 30 days",
-  "90d": "Last 90 days",
-  "1y": "Last year",
-};
+import type { MonthRange, TransactionsSortBy } from "types";
 
 export const ICON_PRESETS = {
   ShoppingCart,
@@ -42,3 +35,5 @@ export const TRANSACTION_SORT_LABELS: Record<TransactionsSortBy, string> = {
   amount_desc: "Highest amount",
   amount_asc: "Lowest amount",
 };
+
+export const MONTH_RANGE_OPTIONS: MonthRange[] = [6, 12, 24];

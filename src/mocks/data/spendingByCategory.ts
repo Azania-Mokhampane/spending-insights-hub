@@ -1,4 +1,4 @@
-import type { Period, SpendingByCategoryType } from "types";
+import type { SpendingByCategoryType } from "types";
 import { faker } from "@faker-js/faker";
 import { ALL_CATEGORIES } from "./categoriesAndFilters";
 
@@ -7,7 +7,7 @@ export const spendingByCategory = ({
   startDate,
   endDate,
 }: {
-  period: Period;
+  period: string;
   endDate?: string;
   startDate?: string;
 }): SpendingByCategoryType => {

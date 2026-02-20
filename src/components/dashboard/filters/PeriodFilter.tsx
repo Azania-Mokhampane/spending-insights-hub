@@ -1,18 +1,18 @@
-import { periodNames } from "@/lib/constants";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import type { Period } from "types";
+} from "../../ui/select";
+import type { DateRangePresetType } from "types";
 
 interface IPeriodFilterProps {
-  period: Period;
-  setPeriod: (period: Period) => void;
+  period: string;
+  setPeriod: (period: string) => void;
   ariaLabel?: string;
   disabled?: boolean;
+  dateRangePresets: DateRangePresetType[];
 }
 
 const PeriodFilter = ({
@@ -20,11 +20,12 @@ const PeriodFilter = ({
   setPeriod,
   ariaLabel,
   disabled,
+  dateRangePresets,
 }: IPeriodFilterProps) => {
   return (
     <Select
       value={period}
-      onValueChange={(value) => setPeriod(value as Period)}
+      onValueChange={(value) => setPeriod(value)}
       disabled={disabled}
     >
       <SelectTrigger
@@ -34,9 +35,9 @@ const PeriodFilter = ({
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {Object.entries(periodNames).map(([value, label]) => (
-          <SelectItem key={value} value={value}>
-            {label}
+        {dateRangePresets.map((preset) => (
+          <SelectItem key={preset.value} value={preset.value}>
+            {preset.label}
           </SelectItem>
         ))}
       </SelectContent>

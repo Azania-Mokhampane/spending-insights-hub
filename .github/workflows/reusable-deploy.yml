@@ -1,0 +1,28 @@
+name: Deploy to Cloudflare
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t spending-insights-hub .
+
+      - name: Extract dist from container
+        run: |
+          docker create --name temp-container spending-insights-hub
+          docker cp temp-container:/app/dist ./dist
+          docker rm temp-container
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name spending-insights-hub

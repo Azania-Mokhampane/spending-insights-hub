@@ -1,5 +1,5 @@
 import type { SpendingByCategoryType } from "types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import {
   Cell,
@@ -9,9 +9,8 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import CategoryIcon from "./CategoryIcon";
-import { PieChart as PieChartIcon } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { PieChartIcon } from "lucide-react";
+import CategoryListItem from "./CategoryListItem";
 
 interface ICategoryBreakdownProps {
   spendingByCategory: SpendingByCategoryType;
@@ -98,43 +97,8 @@ const CategoryBreakdown = ({ spendingByCategory }: ICategoryBreakdownProps) => {
               </ResponsiveContainer>
             </div>
             <div className="flex-1 w-full space-y-4">
-              {categories.map((cat) => (
-                <div key={cat.name} className="flex items-center gap-2">
-                  <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${cat.color}20` }}
-                  >
-                    <CategoryIcon iconName={cat.icon} color={cat.color} />
-                  </div>
-                  <div className="flex-1 min-w-0 overflow-hidden">
-                    <div className="flex items-center justify-between text-sm gap-1">
-                      <div className="flex flex-row gap-1 items-center">
-                        <p className="font-medium truncate text-xs sm:text-sm">
-                          {cat.name}
-                        </p>
-                        <Badge variant="outline" className="text-xs">
-                          {cat.transactionCount} Transactions
-                        </Badge>
-                      </div>
-
-                      <span className="font-mono text-[11px] text-muted-foreground whitespace-nowrap">
-                        <span className="hidden xl:inline">
-                          {formatCurrency(cat.amount)} ·{" "}
-                        </span>
-                        {cat.percentage}%
-                      </span>
-                    </div>
-                    <div className="mt-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                      <div
-                        className="h-full rounded-full transition-all duration-700"
-                        style={{
-                          width: `${cat.percentage}%`,
-                          backgroundColor: cat.color,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
+              {categories.map((category) => (
+                <CategoryListItem key={category.name} category={category} />
               ))}
             </div>
           </>

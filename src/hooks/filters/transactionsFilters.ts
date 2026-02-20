@@ -5,7 +5,9 @@ import {
   parseAsStringLiteral,
   parseAsIsoDate,
 } from "nuqs";
-import type { TransactionsSortBy } from "types";
+import type { DateRangePresetType, TransactionsSortBy } from "types";
+
+const FALLBACK_DEFAULT = "30d";
 
 const sortByParser = parseAsStringLiteral<TransactionsSortBy>([
   "amount_asc",
@@ -37,3 +39,12 @@ export const useSortByFilter = () =>
 
 export const useMonthRangeFilter = () =>
   useQueryState("monthRange", parseAsInteger.withDefault(12));
+
+export const usePeriodFilter = (presets?: DateRangePresetType[]) => {
+  const defaultPeriod =
+    presets?.find((p) => p.value === "30d")?.value ??
+    presets?.[0]?.value ??
+    FALLBACK_DEFAULT;
+
+  return useQueryState("period", parseAsString.withDefault(defaultPeriod));
+};
