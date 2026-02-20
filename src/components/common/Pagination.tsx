@@ -13,13 +13,75 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
+/**
+ * Props for the Pagination component.
+ */
 interface PaginationProps {
+  /**
+   * Current active page (1-based index).
+   */
   page: number;
+
+  /**
+   * Function to update the current page.
+   */
   setPage: (page: number) => void;
+
+  /**
+   * Total number of entries across all pages.
+   */
   totalEntries: number;
+
+  /**
+   * Function to update the number of rows per page.
+   */
   setPerPage: (perPage: number) => void;
+
+  /**
+   * Number of rows displayed per page.
+   */
   perPage: number;
 }
+
+/**
+ * Pagination component for navigating paginated data tables.
+ *
+ * Features:
+ * - First / Previous / Next / Last navigation
+ * - Rows per page selector
+ * - Page counter display
+ * - Automatically disables invalid navigation
+ *
+ * @example
+ * Basic usage
+ * ```tsx
+ * const [page, setPage] = useState(1);
+ * const [perPage, setPerPage] = useState(20);
+ *
+ * <Pagination
+ *   page={page}
+ *   setPage={setPage}
+ *   perPage={perPage}
+ *   setPerPage={setPerPage}
+ *   totalEntries={transactions.length}
+ * />
+ * ```
+ *
+ * @example
+ * With server-side pagination
+ * ```tsx
+ * <Pagination
+ *   page={page}
+ *   setPage={(newPage) => {
+ *     setPage(newPage);
+ *     refetch();
+ *   }}
+ *   perPage={perPage}
+ *   setPerPage={setPerPage}
+ *   totalEntries={data?.totalCount ?? 0}
+ * />
+ * ```
+ */
 
 const Pagination = ({
   setPerPage,

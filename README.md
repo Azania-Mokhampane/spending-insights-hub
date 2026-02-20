@@ -4,7 +4,7 @@ A responsive personal finance dashboard that helps users visualize spending patt
 
 ## Live Demo
 
-🔗 [spending-insights-hub.vercel.app](https://spending-insights-hub.vercel.app)
+🔗 [spending-insights-hub.pages.dev](https://spending-insights-hub.pages.dev/)
 
 ## Repository
 
@@ -88,15 +88,21 @@ docker run -p 4173:4173 spending-insights-hub
 ```
 src/
 ├── components/
-│   ├── dashboard/    # Feature components (charts, goals, transactions)
-│   ├── navigation/   # Navbar, sidebar
-│   └── ui/           # Reusable Shadcn/ui components
-├── pages/            # Route-level page components
-├── hooks/            # Custom hooks for data fetching and filters
-├── mocks/            # MSW handlers and Faker.js mock data
-├── types/            # Centralized TypeScript definitions
-├── helpers/          # Formatting and utility functions
-└── lib/              # Constants and shared utilities
+│   ├── common/           # Reusable components (State, Pagination, PageHeader, CategoryIcon)
+│   ├── dashboard/
+│   │   ├── charts/       # MonthlySpendingTrends, CategoryBreakdown
+│   │   ├── filters/      # DateRangeFilters, PeriodFilter
+│   │   ├── goals/        # BudgetGoals
+│   │   ├── overview/     # CustomerSummary, SectionHeader
+│   │   └── transactions/ # TransactionList, TransactionsFilters, SummaryCards
+│   ├── navigation/       # Navbar, sidebar
+│   └── ui/               # Shadcn/ui components
+├── pages/                # Route-level page components
+├── hooks/                # Custom hooks for data fetching and filters
+├── mocks/                # MSW handlers and Faker.js mock data
+├── types/                # Centralized TypeScript definitions
+├── helpers/              # Formatting and utility functions
+└── lib/                  # Constants and shared utilities
 ```
 
 ---
@@ -110,3 +116,5 @@ src/
 **TanStack Query for server state** — Handles caching, background refetching, and loading/error states cleanly without manual state management, keeping components lean.
 
 **Feature-based component structure** — Components are grouped by feature rather than type (e.g. `dashboard/`, `navigation/`) for better colocation and scalability as the app grows.
+
+**CI/CD with reusable workflows** — GitHub Actions pipeline uses reusable workflow files for quality, build, test and deploy jobs. Deploy only triggers on pushes to master after all checks pass, using Docker to build the app and Wrangler to deploy to Cloudflare Pages.
