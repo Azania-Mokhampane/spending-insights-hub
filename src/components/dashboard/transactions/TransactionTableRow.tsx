@@ -1,8 +1,8 @@
 import CategoryIcon from "@/components/common/CategoryIcon";
+import { Badge } from "@/components/ui/badge";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { formatUTCDate } from "@/helpers/dateUtils";
 import { formatCurrency } from "@/helpers/formatCurrency";
-import { Badge } from "lucide-react";
 import type { TransactionType } from "types";
 
 interface ITransactionTableRowProps {
