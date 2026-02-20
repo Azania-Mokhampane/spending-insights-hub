@@ -7,25 +7,25 @@ import {
 } from "../ui/select";
 import type { DateRangePresetType } from "types";
 
-interface IDatePresetFilterProps {
-  datePreset: string;
-  setDatePreset: (datePreset: string) => void;
+interface IPeriodFilterProps {
+  period: string;
+  setPeriod: (period: string) => void;
   ariaLabel?: string;
   disabled?: boolean;
   dateRangePresets: DateRangePresetType[];
 }
 
-const DatePresetFilter = ({
-  datePreset,
-  setDatePreset,
+const PeriodFilter = ({
+  period,
+  setPeriod,
   ariaLabel,
   disabled,
   dateRangePresets,
-}: IDatePresetFilterProps) => {
+}: IPeriodFilterProps) => {
   return (
     <Select
-      value={datePreset}
-      onValueChange={(value) => setDatePreset(value)}
+      value={period}
+      onValueChange={(value) => setPeriod(value)}
       disabled={disabled}
     >
       <SelectTrigger
@@ -45,4 +45,4 @@ const DatePresetFilter = ({
   );
 };
 
-export default DatePresetFilter;
+export default PeriodFilter;

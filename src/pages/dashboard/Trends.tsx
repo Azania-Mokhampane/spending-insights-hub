@@ -1,14 +1,14 @@
 import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
 import DateRangeFilters from "@/components/dashboard/DateRangeFilters";
 import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
-import DatePresetFilter from "@/components/dashboard/DatePresetFilter";
+import PeriodFilter from "@/components/dashboard/PeriodFilter";
 import PageHeader from "@/components/common/PageHeader";
 import { State } from "@/components/common/State";
 
 import {
   useEndDateFilter,
   useMonthRangeFilter,
-  useDatePresetFilter,
+  usePeriodFilter,
   useStartDateFilter,
 } from "@/hooks/filters/transactionsFilters";
 import { useMonthlyTrends } from "@/hooks/useMonthlyTrends";
@@ -20,7 +20,7 @@ const TrendsPage = () => {
   const customerId = MOCK_CUSTOMER_ID;
 
   const [monthRange, setMonthRange] = useMonthRangeFilter();
-  const [datePreset, setDatePreset] = useDatePresetFilter();
+  const [period, setPeriod] = usePeriodFilter();
   const [startDate, setStartDate] = useStartDateFilter();
   const [endDate, setEndDate] = useEndDateFilter();
   const {
@@ -37,7 +37,7 @@ const TrendsPage = () => {
     isError: isSpendingByCategoryError,
   } = useSpendingByCategory({
     customerId,
-    datePreset,
+    period,
     startDate,
     endDate,
   });
@@ -64,11 +64,11 @@ const TrendsPage = () => {
 
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-            <DatePresetFilter
+            <PeriodFilter
               disabled={isSpendingByCategoryPending}
               ariaLabel="Spending by category period filter"
-              datePreset={datePreset}
-              setDatePreset={setDatePreset}
+              period={period}
+              setPeriod={setPeriod}
               dateRangePresets={dateRangePresets || []}
             />
             <DateRangeFilters

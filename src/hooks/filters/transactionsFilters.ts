@@ -40,14 +40,11 @@ export const useSortByFilter = () =>
 export const useMonthRangeFilter = () =>
   useQueryState("monthRange", parseAsInteger.withDefault(12));
 
-export const useDatePresetFilter = (presets?: DateRangePresetType[]) => {
-  const defaultDatePreset =
+export const usePeriodFilter = (presets?: DateRangePresetType[]) => {
+  const defaultPeriod =
     presets?.find((p) => p.value === "30d")?.value ??
     presets?.[0]?.value ??
     FALLBACK_DEFAULT;
 
-  return useQueryState(
-    "datePreset",
-    parseAsString.withDefault(defaultDatePreset),
-  );
+  return useQueryState("period", parseAsString.withDefault(defaultPeriod));
 };

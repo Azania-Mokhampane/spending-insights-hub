@@ -1,8 +1,8 @@
 import { useSpendingSummary } from "@/hooks/useSpendingSummary";
-import DatePresetFilter from "../DatePresetFilter";
+import PeriodFilter from "../PeriodFilter";
 import { State } from "@/components/common/State";
 import SummaryCards from "../SummaryCards";
-import { useDatePresetFilter } from "@/hooks/filters/transactionsFilters";
+import { usePeriodFilter } from "@/hooks/filters/transactionsFilters";
 import { useDateRangePresets } from "@/hooks/useCategoriesAndFilters";
 
 interface ISpendingSummaryWithFilterProps {
@@ -12,20 +12,20 @@ interface ISpendingSummaryWithFilterProps {
 const SpendingSummaryWithFilter = ({
   customerId,
 }: ISpendingSummaryWithFilterProps) => {
-  const [datePreset, setDatePreset] = useDatePresetFilter();
+  const [period, setPeriod] = usePeriodFilter();
   const { data, isPending, isError } = useSpendingSummary({
-    datePreset,
+    period,
     customerId,
   });
   const { data: dateRangePresets } = useDateRangePresets(customerId);
   return (
     <div className="space-y-4">
       <div className="flex flex-row gap-3 justify-end">
-        <DatePresetFilter
+        <PeriodFilter
           disabled={isPending}
           ariaLabel="Summary period filter select"
-          datePreset={datePreset}
-          setDatePreset={setDatePreset}
+          period={period}
+          setPeriod={setPeriod}
           dateRangePresets={dateRangePresets || []}
         />
       </div>

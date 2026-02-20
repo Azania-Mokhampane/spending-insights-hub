@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DatePresetFilter from "./DatePresetFilter";
+import PeriodFilter from "./PeriodFilter";
 import type { DateRangePresetType } from "types";
 
 const mockPresets: DateRangePresetType[] = [
@@ -11,28 +11,28 @@ const mockPresets: DateRangePresetType[] = [
 ];
 
 const defaultProps = {
-  datePreset: "30d",
-  setDatePreset: vi.fn(),
+  period: "30d",
+  setPeriod: vi.fn(),
   dateRangePresets: mockPresets,
 };
 
-describe("DatePresetFilter", () => {
+describe("PeriodFilter", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   it("renders with default aria label when none provided", () => {
-    render(<DatePresetFilter {...defaultProps} />);
+    render(<PeriodFilter {...defaultProps} />);
     expect(screen.getByLabelText("Period filter select")).toBeInTheDocument();
   });
 
   it("renders with custom aria label when provided", () => {
-    render(<DatePresetFilter {...defaultProps} ariaLabel="Spending period" />);
+    render(<PeriodFilter {...defaultProps} ariaLabel="Spending period" />);
     expect(screen.getByLabelText("Spending period")).toBeInTheDocument();
   });
 
   it("renders all period options from presets", async () => {
-    render(<DatePresetFilter {...defaultProps} />);
+    render(<PeriodFilter {...defaultProps} />);
     await userEvent.click(screen.getByLabelText("Period filter select"));
     const options = screen.getAllByRole("option");
     expect(options).toHaveLength(4);
@@ -43,19 +43,19 @@ describe("DatePresetFilter", () => {
   });
 
   it("renders empty select when no presets provided", () => {
-    render(<DatePresetFilter {...defaultProps} dateRangePresets={[]} />);
+    render(<PeriodFilter {...defaultProps} dateRangePresets={[]} />);
     expect(screen.getByLabelText("Period filter select")).toBeInTheDocument();
   });
 
   it("calls setPeriod with correct value when an option is selected", async () => {
-    render(<DatePresetFilter {...defaultProps} />);
+    render(<PeriodFilter {...defaultProps} />);
     await userEvent.click(screen.getByLabelText("Period filter select"));
     await userEvent.click(screen.getByText("Last 7 days"));
-    expect(defaultProps.setDatePreset).toHaveBeenCalledWith("7d");
+    expect(defaultProps.setPeriod).toHaveBeenCalledWith("7d");
   });
 
   it("disables the select when disabled prop is true", () => {
-    render(<DatePresetFilter {...defaultProps} disabled />);
+    render(<PeriodFilter {...defaultProps} disabled />);
     expect(screen.getByLabelText("Period filter select")).toBeDisabled();
   });
 });
