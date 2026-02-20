@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
 import { formatCurrency } from "@/helpers/formatCurrency";
