@@ -2,8 +2,8 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { renderWithProviders } from "@/tests/testUtils";
-import SpendingSummaryWithFilter from "./SpendingSummaryWithFilter";
 import type { SpendingSummaryType } from "types";
+import SpendingSummaryWithFilter from "./SpendingSummaryWithFilter";
 
 vi.mock("@/hooks/filters/usePeriodSearchParams", () => ({
   usePeriodSearchParams: () => ["30d", vi.fn()],

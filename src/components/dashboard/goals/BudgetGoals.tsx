@@ -1,17 +1,37 @@
-import type { BudgetGoal } from "types";
-import { AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
+import type { BudgetGoal, GoalStatusType } from "types";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  XCircle,
+  type LucideIcon,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { Badge } from "@/components/ui/badge";
 
-const statusConfig = {
+const STATUS_CONFIG: Record<
+  GoalStatusType,
+  {
+    icon: LucideIcon;
+    className: string;
+    label: string;
+  }
+> = {
   on_track: {
     icon: CheckCircle2,
     className: "text-success",
     label: "On track",
   },
-  warning: { icon: AlertTriangle, className: "text-warning", label: "Warning" },
-  exceeded: { icon: XCircle, className: "text-destructive", label: "Exceeded" },
+  warning: {
+    icon: AlertTriangle,
+    className: "text-warning",
+    label: "Warning",
+  },
+  exceeded: {
+    icon: XCircle,
+    className: "text-destructive",
+    label: "Exceeded",
+  },
 };
 
 interface IBudgetGoalsProps {
@@ -26,7 +46,7 @@ const BudgetGoals = ({ goals }: IBudgetGoalsProps) => {
       </CardHeader>
       <CardContent className="space-y-5">
         {goals.map((goal) => {
-          const config = statusConfig[goal.status];
+          const config = STATUS_CONFIG[goal.status];
           const StatusIcon = config.icon;
           const progressColor =
             goal.status === "on_track"

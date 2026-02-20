@@ -1,7 +1,7 @@
-import CategoryBreakdown from "@/components/dashboard/CategoryBreakdown";
-import DateRangeFilters from "@/components/dashboard/DateRangeFilters";
-import MonthlySpendingTrends from "@/components/dashboard/MonthlySpendingTrends";
-import PeriodFilter from "@/components/dashboard/PeriodFilter";
+import CategoryBreakdown from "@/components/dashboard/charts/CategoryBreakdown";
+import DateRangeFilters from "@/components/dashboard/filters/DateRangeFilters";
+import MonthlySpendingTrends from "@/components/dashboard/charts/MonthlySpendingTrends";
+import PeriodFilter from "@/components/dashboard/filters/PeriodFilter";
 import PageHeader from "@/components/common/PageHeader";
 import { State } from "@/components/common/State";
 

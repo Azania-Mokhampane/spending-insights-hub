@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/select";
 import { TRANSACTION_SORT_LABELS } from "@/lib/constants";
 import { ArrowDownUp, Filter } from "lucide-react";
-import CategoryIcon from "../CategoryIcon";
-import DateRangeFilters from "../DateRangeFilters";
+import CategoryIcon from "../../common/CategoryIcon";
+import DateRangeFilters from "../filters/DateRangeFilters";
 
 interface ITransactionsFiltersProps {
   categories: CategoryType[];

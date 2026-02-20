@@ -1,5 +1,5 @@
 import type { MonthlySpendingTrendType } from "types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import {
   Bar,
   CartesianGrid,
@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { formatMonth } from "@/helpers/dateUtils";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { MONTH_RANGE_OPTIONS } from "@/lib/constants";
 
 interface IMonthlySpendingTrendsProps {

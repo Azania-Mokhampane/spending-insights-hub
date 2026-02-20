@@ -1,9 +1,9 @@
 import { useSpendingSummary } from "@/hooks/useSpendingSummary";
-import PeriodFilter from "../PeriodFilter";
 import { State } from "@/components/common/State";
-import SummaryCards from "../SummaryCards";
 import { usePeriodFilter } from "@/hooks/filters/transactionsFilters";
 import { useDateRangePresets } from "@/hooks/useCategoriesAndFilters";
+import PeriodFilter from "../filters/PeriodFilter";
+import SummaryCards from "./SummaryCards";
 
 interface ISpendingSummaryWithFilterProps {
   customerId: string;

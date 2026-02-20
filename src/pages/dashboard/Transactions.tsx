@@ -1,5 +1,5 @@
-import TransactionList from "@/components/dashboard/transactions/TransactionList";
 import PageHeader from "@/components/common/PageHeader";
+import TransactionList from "@/components/dashboard/transactions/TransactionList";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
 const TransactionsPage = () => {

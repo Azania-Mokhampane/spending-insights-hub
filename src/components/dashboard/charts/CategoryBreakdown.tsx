@@ -1,5 +1,5 @@
 import type { SpendingByCategoryType } from "types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import {
   Cell,
@@ -9,9 +9,9 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import CategoryIcon from "./CategoryIcon";
+import CategoryIcon from "../../common/CategoryIcon";
 import { PieChart as PieChartIcon } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../ui/badge";
 
 interface ICategoryBreakdownProps {
   spendingByCategory: SpendingByCategoryType;

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
 import { formatCurrency } from "@/helpers/formatCurrency";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../ui/table";
+} from "@/components/ui/table";
 import {
   useCategoryFilter,
   useEndDateFilter,
@@ -19,15 +19,15 @@ import {
   useSortByFilter,
   useStartDateFilter,
 } from "@/hooks/filters/transactionsFilters";
-import CategoryIcon from "../CategoryIcon";
-import { Badge } from "../../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { useTransactions } from "@/hooks/useTransactions";
-import { State } from "../../common/State";
 import { useEffect } from "react";
-import Pagination from "../../common/Pagination";
-import TransactionsFilters from "./TransactionsFilters";
 import { useCategories } from "@/hooks/useCategoriesAndFilters";
 import SpendingSummaryWithFilter from "./SpendingSummaryWithFilter";
+import TransactionsFilters from "./TransactionsFilters";
+import { State } from "@/components/common/State";
+import CategoryIcon from "../../common/CategoryIcon";
+import Pagination from "@/components/common/Pagination";
 
 interface ITransactionListProps {
   customerId: string;
@@ -66,7 +66,6 @@ const TransactionList = ({ customerId }: ITransactionListProps) => {
   return (
     <>
       <SpendingSummaryWithFilter customerId={customerId} />
-
       <Card>
         <CardHeader>
           <CardTitle className="text-base font-semibold">
