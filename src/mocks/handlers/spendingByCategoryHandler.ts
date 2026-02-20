@@ -1,4 +1,3 @@
-import type { Period } from "types";
 import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
 import { spendingByCategory } from "../data/spendingByCategory";
@@ -8,7 +7,7 @@ export const spendingByCategoryHandler = http.get(
   async ({ params, request }) => {
     const { customerId } = params;
     const url = new URL(request.url);
-    const period = (url.searchParams.get("period") ?? "30d") as Period;
+    const period = url.searchParams.get("period") ?? "30d";
     const startDate = url.searchParams.get("startDate") || undefined;
     const endDate = url.searchParams.get("endDate") || undefined;
 

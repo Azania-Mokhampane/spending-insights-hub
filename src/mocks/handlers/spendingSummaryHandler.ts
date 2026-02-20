@@ -1,6 +1,5 @@
 import { delay, http, HttpResponse } from "msw";
 import { mockCustomers } from "../data/customers";
-import type { Period } from "types";
 import { customerSpendingSummary } from "../data/customerSpendingSummary";
 
 export const spendingSummaryHandler = http.get(
@@ -8,7 +7,7 @@ export const spendingSummaryHandler = http.get(
   async ({ params, request }) => {
     const { customerId } = params;
     const url = new URL(request.url);
-    const period = (url.searchParams.get("period") ?? "30d") as Period;
+    const period = url.searchParams.get("period") ?? "30d";
 
     await delay(600);
 

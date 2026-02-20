@@ -1,4 +1,4 @@
-import type { Period, SpendingByCategoryType } from "types";
+import type { SpendingByCategoryType } from "types";
 import { useQuery } from "@tanstack/react-query";
 import { formatToISODate } from "@/helpers/dateUtils";
 
@@ -11,7 +11,7 @@ export const useSpendingByCategory = ({
   endDate,
 }: {
   customerId: string;
-  period: Period;
+  period: string;
   startDate?: Date | null;
   endDate?: Date | null;
 }) => {

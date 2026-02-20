@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --build --noEmit tsconfig.app.json",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest",

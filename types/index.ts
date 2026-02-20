@@ -8,10 +8,8 @@ export type CustomerProfileType = {
   currency: string;
 };
 
-export type Period = "7d" | "30d" | "90d" | "1y";
-
 export type SpendingSummaryType = {
-  period: Period;
+  period: string;
   totalSpent: number;
   transactionCount: number;
   averageTransaction: number;
