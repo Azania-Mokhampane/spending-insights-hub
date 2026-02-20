@@ -22,11 +22,18 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      "max-lines": [
+        "error",
+        { max: 150, skipBlankLines: true, skipComments: true },
+      ],
+    },
   },
   {
     files: ["src/components/ui/**/*.{ts,tsx}", "src/tests/**/*.{ts,tsx}"],
     rules: {
       "react-refresh/only-export-components": "off",
+      "max-lines": "off",
     },
   },
 ]);

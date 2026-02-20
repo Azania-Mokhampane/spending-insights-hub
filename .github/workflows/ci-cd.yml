@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  quality:
+    uses: ./.github/workflows/reusable-quality.yml
+
+  build:
+    uses: ./.github/workflows/reusable-build.yml
+    needs: quality
+
+  test:
+    uses: ./.github/workflows/reusable-test.yml
+    needs: quality
+
+  deploy:
+    uses: ./.github/workflows/reusable-deploy.yml
+    needs: [quality, build, test]
+    if: github.event_name == 'push'
