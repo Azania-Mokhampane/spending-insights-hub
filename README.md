@@ -15,6 +15,7 @@ A responsive personal finance dashboard that helps users visualize spending patt
 ## Screenshots
 
 ### Desktop
+
 <img width="756" alt="Screenshot 2026-02-20 at 18 31 03" src="https://github.com/user-attachments/assets/7115d2c9-7b3e-44e9-8e39-363a6909de53" />
 <img width="756" alt="Screenshot 2026-02-20 at 18 31 12" src="https://github.com/user-attachments/assets/8c4ecf9a-e1ca-43b8-bf72-b62ffa520d95" />
 <img width="756" alt="Screenshot 2026-02-20 at 18 31 22" src="https://github.com/user-attachments/assets/2e2ad123-d96a-48c9-914d-986e309f3e38" />
@@ -22,6 +23,7 @@ A responsive personal finance dashboard that helps users visualize spending patt
 <img width="756" alt="Screenshot 2026-02-20 at 18 34 40" src="https://github.com/user-attachments/assets/d5fce050-f497-4946-ab22-a65f06879733" />
 
 ### Mobile
+
 <img width="349" height="752" alt="Screenshot 2026-02-20 at 18 41 10" src="https://github.com/user-attachments/assets/eb7b5d07-db51-4c7e-a6d7-14bea78ea4c4" />
 <img width="349" height="751" alt="Screenshot 2026-02-20 at 18 41 25" src="https://github.com/user-attachments/assets/7171bab8-2b36-40de-96ff-015afacc2a00" />
 <img width="347" height="752" alt="Screenshot 2026-02-20 at 18 41 47" src="https://github.com/user-attachments/assets/46dbf354-87c3-4df8-8c79-4e20eb4cee52" />
@@ -137,8 +139,8 @@ src/
 
 **CI/CD with reusable workflows** — GitHub Actions pipeline uses reusable workflow files for quality, build, test and deploy jobs. Deploy only triggers on pushes to master after all checks pass, using Docker to build the app and Wrangler to deploy to Cloudflare Pages.
 
-
 ---
+
 # Contact
 
 Built by **Azania Mokhampane**
