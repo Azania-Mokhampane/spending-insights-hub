@@ -2,9 +2,11 @@ import PageHeader from "@/components/common/PageHeader";
 import { State } from "@/components/common/State";
 import BudgetGoals from "@/components/dashboard/goals/BudgetGoals";
 import { useBudgetGoals } from "@/hooks/useBudgetGoals";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
 const GoalsPage = () => {
+  usePageTitle();
   const customerId = MOCK_CUSTOMER_ID;
 
   const { data, isPending, isError } = useBudgetGoals(customerId);

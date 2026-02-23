@@ -1,9 +1,11 @@
 import Navbar from "@/components/navigation/Navbar";
 import { Button } from "@/components/ui/button";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import { DASHBOARD_ROUTE } from "@/routes";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  usePageTitle();
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />

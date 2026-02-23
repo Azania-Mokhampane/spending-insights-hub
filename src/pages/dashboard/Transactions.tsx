@@ -1,8 +1,10 @@
 import PageHeader from "@/components/common/PageHeader";
 import TransactionList from "@/components/dashboard/transactions/TransactionList";
+import { usePageTitle } from "@/hooks/usePageTitle";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 
 const TransactionsPage = () => {
+  usePageTitle();
   const customerId = MOCK_CUSTOMER_ID;
 
   return (
