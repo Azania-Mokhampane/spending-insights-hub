@@ -15,8 +15,10 @@ import { useSpendingByCategory } from "@/hooks/useSpendingByCategory";
 import { MOCK_CUSTOMER_ID } from "@/mocks/data/customers";
 import { useDateRangePresets } from "@/hooks/useCategoriesAndFilters";
 import CategoryBreakdown from "@/components/dashboard/charts/categories/CategoryBreakdown";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const TrendsPage = () => {
+  usePageTitle();
   const customerId = MOCK_CUSTOMER_ID;
 
   const [monthRange, setMonthRange] = useMonthRangeFilter();

@@ -1,15 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
-import {
-  DASHBOARD_GOALS_ROUTE,
-  DASHBOARD_ROUTE,
-  DASHBOARD_TRANSACTIONS_ROUTE,
-  DASHBOARD_TRENDS_ROUTE,
-  HOME_ROUTE,
-} from "./routes";
+import { DASHBOARD_ROUTE, HOME_ROUTE } from "./routes";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import OverviewPage from "./pages/dashboard/Overview";
 import TransactionsPage from "./pages/dashboard/Transactions";
@@ -18,38 +12,34 @@ import GoalsPage from "./pages/dashboard/Goals";
 
 const queryClient = new QueryClient();
 
+const router = createBrowserRouter([
+  {
+    path: HOME_ROUTE,
+    element: <HomePage />,
+    handle: { title: "Spending Insights Hub" },
+  },
+  {
+    path: DASHBOARD_ROUTE,
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <OverviewPage />, handle: { title: "Overview" } },
+      {
+        path: "transactions",
+        element: <TransactionsPage />,
+        handle: { title: "Transactions" },
+      },
+      { path: "trends", element: <TrendsPage />, handle: { title: "Trends" } },
+      { path: "goals", element: <GoalsPage />, handle: { title: "Goals" } },
+    ],
+  },
+  { path: "*", element: <NotFound /> },
+]);
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NuqsAdapter>
-        <BrowserRouter>
-          <Routes>
-            <Route path={HOME_ROUTE} element={<HomePage />} />
-            <Route path={DASHBOARD_ROUTE} element={<DashboardLayout />}>
-              <Route index element={<OverviewPage />} />
-              <Route
-                path={DASHBOARD_TRANSACTIONS_ROUTE.replace(
-                  DASHBOARD_ROUTE,
-                  "",
-                ).slice(1)}
-                element={<TransactionsPage />}
-              />
-              <Route
-                path={DASHBOARD_TRENDS_ROUTE.replace(DASHBOARD_ROUTE, "").slice(
-                  1,
-                )}
-                element={<TrendsPage />}
-              />
-              <Route
-                path={DASHBOARD_GOALS_ROUTE.replace(DASHBOARD_ROUTE, "").slice(
-                  1,
-                )}
-                element={<GoalsPage />}
-              />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </NuqsAdapter>
     </QueryClientProvider>
   );

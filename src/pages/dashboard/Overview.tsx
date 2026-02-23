@@ -11,8 +11,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import SectionHeader from "@/components/dashboard/overview/SectionHeader";
 import SummaryCards from "@/components/dashboard/transactions/SummaryCards";
 import CategoryBreakdown from "@/components/dashboard/charts/categories/CategoryBreakdown";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const OverviewPage = () => {
+  usePageTitle();
   const customerId = MOCK_CUSTOMER_ID;
   const { data: customer, isPending: isCustomerPending } =
     useCustomerProfile(customerId);
